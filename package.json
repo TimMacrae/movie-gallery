@@ -1,0 +1,26 @@
+{
+  "name": "movie-gallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "start:frontend": "npm --workspace frontend run dev",
+    "start:backend": "npm --workspace backend start",
+    "start": "npm run start:frontend & npm run start:backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimMacrae/movie-gallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimMacrae/movie-gallery/issues"
+  },
+  "homepage": "https://github.com/TimMacrae/movie-gallery#readme"
+}
