@@ -1,5 +1,3 @@
-import { Comment } from "./comment.type";
-
 export type Genre =
   | "Action"
   | "Comedy"
