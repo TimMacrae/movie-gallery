@@ -1,6 +1,8 @@
-import { Movie } from "./types/movie.type";
+import { Movie } from "../../types/movie.type";
 
-export const movies: Movie[] = [
+type MovieWithoutId = Omit<Movie, "_id" | "ratings" | "averageRating">;
+
+export const movies: MovieWithoutId[] = [
   {
     title: "Mad Max: Fury Road",
     release_date: 1430438400000,

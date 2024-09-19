@@ -1,6 +1,6 @@
 import { verify } from "jsonwebtoken";
 import { IUser } from "packages/types/user.type";
-import User from "../src/user/user-schema.model";
+import User from "../model/user-schema.model";
 import { Request, Response, NextFunction } from "express";
 
 // Extend the Request interface to include the user property

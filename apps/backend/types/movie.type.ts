@@ -11,6 +11,7 @@ export type Genre =
   | "Fantasy";
 
 export interface Movie {
+  _id: string;
   title: string;
   poster: string;
   release_date: number;
@@ -18,4 +19,6 @@ export interface Movie {
   duration: number;
   plot: string;
   comments: string[];
+  ratings: number;
+  averageRating: number;
 }

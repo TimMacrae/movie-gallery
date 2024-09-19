@@ -1,4 +1,4 @@
-import Comment from "./comments-schema.model";
+import Comment from "../../model/comments-schema.model";
 import { connectDB } from "../../helper/connectDB.helper";
 import { comments } from "./comments";
 import mongoose from "mongoose";
