@@ -6,6 +6,7 @@ export const APIROUTES = {
     SIGNOUT: "/auth/signout",
     GET_USER: "/auth/user",
     GET_MOVIES: "/movies",
+    GET_MOVIE: "/movies/movie",
   },
   URL: {
     HOME: "/",
@@ -18,5 +19,6 @@ export const APIROUTES = {
   },
   QUERY_KEYS: {
     USER: "USER",
+    MOVIES: "MOVIES",
   },
 };
