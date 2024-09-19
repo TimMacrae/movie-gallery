@@ -1,14 +1,17 @@
-export type Genre =
-  | "Action"
-  | "Comedy"
-  | "Drama"
-  | "Horror"
-  | "Romance"
-  | "Science-Fiction"
-  | "Thriller"
-  | "Animation"
-  | "Documentary"
-  | "Fantasy";
+export const genres = [
+  "Action",
+  "Comedy",
+  "Drama",
+  "Horror",
+  "Romance",
+  "Science-Fiction",
+  "Thriller",
+  "Animation",
+  "Documentary",
+  "Fantasy",
+] as const;
+
+export type Genre = (typeof genres)[number];
 
 export interface Movie {
   _id: string;
