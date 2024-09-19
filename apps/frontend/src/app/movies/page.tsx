@@ -28,7 +28,7 @@ export default function MoviesPage() {
     <div style={{ minHeight: `calc(100vh - 80px` }}>
       <MoviesFilter />
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 grid-rows-auto gap-9 px-6 py-6 "
+        className="grid  grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2 gap-9 px-6 py-6 "
         style={{ height: "82vh" }}
       >
         {data?.movies.map((movie) => (
