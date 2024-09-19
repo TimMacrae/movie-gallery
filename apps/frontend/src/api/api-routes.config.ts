@@ -5,6 +5,7 @@ export const APIROUTES = {
     SIGNUP: "/auth/signup",
     SIGNOUT: "/auth/signout",
     GET_USER: "/auth/user",
+    GET_MOVIES: "/movies",
   },
   URL: {
     HOME: "/",
