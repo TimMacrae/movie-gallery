@@ -1,4 +1,4 @@
-import User from "../../src/user/user-schema.model";
+import User from "../../model/user-schema.model";
 import { connectDB } from "../../helper/connectDB.helper";
 import { comments } from "../comments/comments";
 import mongoose from "mongoose";
