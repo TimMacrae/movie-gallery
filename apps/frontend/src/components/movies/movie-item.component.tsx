@@ -12,7 +12,12 @@ export const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
   const releaseYear = new Date(movie.release_date).getFullYear();
   return (
     <div className="relative w-full h-full overflow-hidden rounded-lg shadow-lg">
-      <Image src={movie.poster} alt={movie.title} fill />
+      <Image
+        src={movie.poster}
+        alt={movie.title}
+        layout="fill"
+        objectFit="cover"
+      />
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
         <h1 className="text-white text-xl font-bold">{movie.title}</h1>
         <p className="text-white">{movie.genre}</p>
