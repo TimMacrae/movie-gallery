@@ -24,4 +24,25 @@ export interface Movie {
   comments: string[];
   ratings: number;
   averageRating: number;
+  commentsTotal: number;
+}
+
+export interface MoviesQueryFilter {
+  search?: string;
+  genre?: string;
+  releaseYear?: string;
+  top10?: boolean;
+  sortBy?: string;
+  sortOrder?: string;
+}
+
+export interface MoviesQueryParams extends MoviesQueryFilter {
+  page: number;
+  limit: number;
+}
+
+export interface MoviesResponse {
+  movies: Movie[];
+  totalPages: number;
+  currentPage: number;
 }

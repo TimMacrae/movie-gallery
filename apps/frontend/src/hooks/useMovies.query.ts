@@ -1,24 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { APIROUTES } from "../api/api-routes.config";
-import { Movie } from "../components/movies/types/movie.type";
-
-interface MoviesQueryParams {
-  page: number;
-  limit: number;
-  search?: string;
-  genre?: string;
-  releaseYear?: string;
-  top10?: boolean;
-  sortBy?: string;
-  sortOrder?: string;
-}
-
-interface MoviesResponse {
-  movies: Movie[];
-  totalPages: number;
-  currentPage: number;
-}
+import { MoviesQueryParams, MoviesResponse } from "../types/movie.type";
 
 const getMovies = async (
   moviesQueryParams: MoviesQueryParams
