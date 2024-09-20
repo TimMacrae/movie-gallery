@@ -9,6 +9,7 @@ interface IMovie extends Document {
   duration: string;
   plot: string;
   comments: mongoose.Types.ObjectId[];
+  commentsTotal: number;
   averageRating: number;
   ratings: number;
 }
@@ -22,6 +23,7 @@ const movieSchema: Schema = new Schema({
   duration: { type: String, required: true },
   plot: { type: String, required: true },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+  commentsTotal: { type: Number, default: 0 },
   averageRating: { type: Number },
   ratings: { type: Number },
 });
