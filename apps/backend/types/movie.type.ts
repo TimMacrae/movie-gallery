@@ -22,3 +22,17 @@ export interface Movie {
   ratings: number;
   averageRating: number;
 }
+
+export interface MoviesQueryFilter {
+  search?: string;
+  genre?: string;
+  releaseYear?: string;
+  top10?: boolean;
+  sortBy?: string;
+  sortOrder?: string;
+}
+
+export interface MoviesQueryParams extends MoviesQueryFilter {
+  page: number;
+  limit: number;
+}
