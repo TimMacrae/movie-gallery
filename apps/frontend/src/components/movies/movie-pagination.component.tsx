@@ -12,7 +12,7 @@ import {
 
 interface MoviesPaginationProps {
   setPageNumber: React.Dispatch<React.SetStateAction<number>>;
-  pageNumber: number;
+  pageNumber?: number;
   totalPages?: number;
 }
 
