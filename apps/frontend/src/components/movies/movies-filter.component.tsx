@@ -8,58 +8,84 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { genres } from "./types/movie.type";
+import { genres, MoviesQueryFilter } from "../../types/movie.type";
 import { Card } from "@/components/ui/card";
 
 const sortingOptions = [
-  { value: "releaseYear", label: "Release Year" },
+  { value: "release_date", label: "Release Year" },
   { value: "averageRating", label: "Average Rating" },
-  { value: "numberOfRatings", label: "Number of Ratings" },
-  { value: "numberOfComments", label: "Number of Comments" },
+  { value: "ratings", label: "Number of Ratings" },
+  { value: "commentsTotal", label: "Number of Comments" },
 ];
 
-export const MoviesFilter: React.FC = () => {
-  const [searchTitle, setSearchTitle] = useState("");
-  const [releaseYear, setReleaseYear] = useState("");
-  const [selectedGenre, setSelectedGenre] = useState("");
-  const [sortCriteria, setSortCriteria] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
+interface MoviesFilterProps {
+  setMovieFilters: (filter: MoviesQueryFilter | null) => void;
+  setPageNumber: (pageNumber: number) => void;
+}
+
+export const MoviesFilter: React.FC<MoviesFilterProps> = ({
+  setMovieFilters,
+  setPageNumber,
+}) => {
+  const [filter, setFilter] = useState({
+    search: "",
+    releaseYear: "",
+    genre: "",
+    sortBy: "",
+    sortOrder: "asc",
+  });
+
+  const updateFilter = (name: string, value: string) => {
+    setFilter((prevFilter) => ({
+      ...prevFilter,
+      [name]: value,
+    }));
+  };
 
   const handleSearch = () => {
-    // Handle the search logic here
-    console.log("Search Title:", searchTitle);
-    console.log("Release Year:", releaseYear);
-    console.log("Selected Genre:", selectedGenre);
-    console.log("Sort Criteria:", sortCriteria);
-    console.log("Sort Order:", sortOrder);
+    setPageNumber(1);
+    setMovieFilters(filter);
   };
 
   const handleReset = () => {
-    setSearchTitle("");
-    setReleaseYear("");
-    setSelectedGenre("");
-    setSortCriteria("");
-    setSortOrder("asc");
+    setFilter({
+      search: "",
+      releaseYear: "",
+      genre: "",
+      sortBy: "",
+      sortOrder: "asc",
+    });
+    setMovieFilters(null);
+    setPageNumber(1);
   };
 
   return (
     <Card className="p-4 m-4 mb-0">
       <div className="flex w-full  items-center space-x-2">
+        {/* Title filter */}
         <Input
           type="search"
+          name="search"
           placeholder="Search title"
-          value={searchTitle}
-          onChange={(e) => setSearchTitle(e.target.value)}
-        />
-        <Input
-          className="w-[240px]"
-          type="number"
-          placeholder="Release year"
-          value={releaseYear}
-          onChange={(e) => setReleaseYear(e.target.value)}
+          value={filter.search}
+          onChange={(e) => updateFilter(e.target.name, e.target.value)}
         />
 
-        <Select value={selectedGenre} onValueChange={setSelectedGenre}>
+        {/* Release year filter */}
+        <Input
+          className="w-[240px]"
+          name="releaseYear"
+          type="number"
+          placeholder="Release year"
+          value={filter.releaseYear}
+          onChange={(e) => updateFilter(e.target.name, e.target.value)}
+        />
+
+        {/* Genre filter */}
+        <Select
+          value={filter.genre}
+          onValueChange={(value) => updateFilter("genre", value)}
+        >
           <SelectTrigger className="w-[240px]">
             <SelectValue placeholder="Genre" />
           </SelectTrigger>
@@ -72,7 +98,11 @@ export const MoviesFilter: React.FC = () => {
           </SelectContent>
         </Select>
 
-        <Select value={sortCriteria} onValueChange={setSortCriteria}>
+        {/* SortBy filter */}
+        <Select
+          value={filter.sortBy}
+          onValueChange={(value) => updateFilter("sortBy", value)}
+        >
           <SelectTrigger className="w-[240px]">
             <SelectValue placeholder="Sort By" />
           </SelectTrigger>
@@ -85,7 +115,11 @@ export const MoviesFilter: React.FC = () => {
           </SelectContent>
         </Select>
 
-        <Select value={sortOrder} onValueChange={setSortOrder}>
+        {/* Order filter */}
+        <Select
+          value={filter.sortOrder}
+          onValueChange={(value) => updateFilter("sortOrder", value)}
+        >
           <SelectTrigger className="w-[240px]">
             <SelectValue placeholder="Order" />
           </SelectTrigger>
@@ -95,10 +129,11 @@ export const MoviesFilter: React.FC = () => {
           </SelectContent>
         </Select>
 
-        <Button variant="outline" onClick={handleReset}>
+        {/* Reset and Search buttons */}
+        <Button variant="outline" onClick={() => handleReset()}>
           Reset
         </Button>
-        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={() => handleSearch()}>Search</Button>
       </div>
     </Card>
   );
