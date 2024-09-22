@@ -28,6 +28,7 @@ export interface Movie {
 }
 
 export interface MoviesQueryFilter {
+  _id?: string;
   search?: string;
   genre?: string;
   releaseYear?: string;
@@ -45,4 +46,13 @@ export interface MoviesResponse {
   movies: Movie[];
   totalPages: number;
   currentPage: number;
+}
+
+export type CommentIds = string[];
+
+export interface Comment {
+  _id: string;
+  movieId: string;
+  user_id: { username: string; _id: string };
+  comment: string;
 }
