@@ -33,7 +33,6 @@ const signupResponseSchema = z.object({
   _id: z.string(),
   username: z.string(),
   email: z.string().email(),
-  token: z.string(),
 });
 
 export type SignupResponse = z.infer<typeof signupResponseSchema>;

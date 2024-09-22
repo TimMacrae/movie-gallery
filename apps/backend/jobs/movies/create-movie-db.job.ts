@@ -1,4 +1,4 @@
-import Movie from "./movie-schema.model";
+import Movie from "../../model/movie-schema.model";
 import { connectDB } from "../../helper/connectDB.helper";
 import { movies } from "./movies";
 import mongoose from "mongoose";

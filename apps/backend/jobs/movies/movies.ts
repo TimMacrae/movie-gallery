@@ -1,6 +1,8 @@
-import { Movie } from "./types/movie.type";
+import { Movie } from "../../types/movie.type";
 
-export const movies: Movie[] = [
+type MovieWithoutId = Omit<Movie, "_id" | "ratings" | "averageRating">;
+
+export const movies: MovieWithoutId[] = [
   {
     title: "Mad Max: Fury Road",
     release_date: 1430438400000,
@@ -325,41 +327,5 @@ export const movies: Movie[] = [
     duration: 138,
     plot: "A U.S. Marshal investigates the disappearance of a murderess who escaped from a hospital for the criminally insane.",
     comments: ["64e40b5224b3d5d79c1f9e5b"],
-  },
-  {
-    title: "The Social Dilemma",
-    release_date: 1601510400000,
-    genre: "Documentary",
-    poster: "/movie-poster/the-social-dilemma.jpg",
-    duration: 94,
-    plot: "Explores the dangerous human impact of social networking, with tech experts sounding the alarm on their own creations.",
-    comments: ["64e40b62c4a1d5c28a7e1b43"],
-  },
-  {
-    title: "13th",
-    release_date: 1475798400000,
-    genre: "Documentary",
-    poster: "/movie-poster/13th.jpg",
-    duration: 100,
-    plot: "An in-depth look at the prison system in the United States and how it reveals the nation's history of racial inequality.",
-    comments: ["64e40b701f3b7f7a91b8e4d3"],
-  },
-  {
-    title: "Free Solo",
-    release_date: 1538006400000,
-    genre: "Documentary",
-    poster: "/movie-poster/free-solo.jpg",
-    duration: 100,
-    plot: "Follow Alex Honnold as he attempts to conquer the first free solo climb of famed El Capitan's 900-metre vertical rock face at Yosemite National Park.",
-    comments: ["64e40b81a7d5f2b85c3f6c12"],
-  },
-  {
-    title: "Blackfish",
-    release_date: 1372118400000,
-    genre: "Documentary",
-    poster: "/movie-poster/blackfish.jpg",
-    duration: 83,
-    plot: "A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.",
-    comments: ["64e40b919e5b9f3a94e7b81f"],
   },
 ];

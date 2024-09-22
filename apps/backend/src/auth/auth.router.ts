@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import User from "../user/user-schema.model";
+import User from "../../model/user-schema.model";
 import { generateToken } from "../../helper/generate-token.helper";
 import {
   SignupRequestBody,
