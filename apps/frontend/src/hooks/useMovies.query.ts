@@ -3,7 +3,7 @@ import axios from "axios";
 import { APIROUTES } from "../api/api-routes.config";
 import { MoviesQueryParams, MoviesResponse } from "../types/movie.type";
 
-const getMovies = async (
+export const getMovies = async (
   moviesQueryParams: MoviesQueryParams
 ): Promise<MoviesResponse> => {
   const response = await axios.get<MoviesResponse>(
