@@ -24,6 +24,7 @@ export interface Movie {
 }
 
 export interface MoviesQueryFilter {
+  _id?: string;
   search?: string;
   genre?: string;
   releaseYear?: string;
