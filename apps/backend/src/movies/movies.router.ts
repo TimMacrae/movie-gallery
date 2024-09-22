@@ -14,11 +14,13 @@ router.get("/", async (req: Request, res: Response) => {
     releaseYear,
     sortBy,
     sortOrder = "asc",
+    _id,
   } = req.query as unknown as MoviesQueryParams;
   try {
     const query: any = {};
 
     // Filtering
+    if (_id) query._id = _id;
     if (search) query.title = { $regex: search, $options: "i" };
     if (genre) query.genre = genre;
     if (releaseYear) {
