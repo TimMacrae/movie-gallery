@@ -9,6 +9,7 @@ import { MoviesPagination } from "@/src/components/movies/movie-pagination.compo
 import { MoviesFilter } from "@/src/components/movies/movies-filter.component";
 import { MoviesQueryFilter } from "@/src/types/movie.type";
 import { Card } from "@/components/ui/card";
+import { LoadingSpinner } from "@/src/components/loading-spinner";
 
 export default function MoviesPage() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -29,24 +30,19 @@ export default function MoviesPage() {
         setPageNumber={setPageNumber}
       />
       <Card className="m-4">
+        {isLoading && <LoadingSpinner />}
         <div
           className="grid  grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:grid-rows-2 gap-9 px-6 py-6 "
-          style={{ height: "82vh" }}
+          style={{ height: "80vh" }}
         >
-          {isLoading ? (
-            <div className="flex items-center justify-center min-h-screen">
-              Loading...
-            </div>
-          ) : (
-            data?.movies.map((movie) => (
-              <Link
-                key={movie._id}
-                href={`${APIROUTES.API.GET_MOVIES}/${movie._id}`}
-              >
-                <MovieItem key={movie._id} movie={movie} />
-              </Link>
-            ))
-          )}
+          {data?.movies.map((movie) => (
+            <Link
+              key={movie._id}
+              href={`${APIROUTES.API.GET_MOVIES}/${movie._id}`}
+            >
+              <MovieItem key={movie._id} movie={movie} />
+            </Link>
+          ))}
         </div>
       </Card>
       <MoviesPagination
