@@ -9,6 +9,9 @@ export const APIROUTES = {
     GET_MOVIE: "/movies/movie",
     POST_COMMENTS: "/comments",
     POST_CREATE_COMMENT: "/comments/create",
+    GET_GALLERY_MOVIES: "/gallery",
+    UPLOAD_POSTER: "/gallery/upload-poster",
+    ADD_GALLERY_MOVIE: "/gallery",
   },
   URL: {
     HOME: "/",
@@ -17,12 +20,13 @@ export const APIROUTES = {
     LOGOUT: "/logout",
     MOVIES: "/movies",
     MOVIE: "/movies/[id]",
-    MY_GALLERY: "/my-gallery",
+    GALLERY: "/gallery",
   },
   QUERY_KEYS: {
     USER: "USER",
     MOVIES: "MOVIES",
     COMMENTS: "COMMENTS",
     CREATE_COMMENT: "CREATE_COMMENT",
+    GALLERY_MOVIES: "GALLERY_MOVIES",
   },
 };
