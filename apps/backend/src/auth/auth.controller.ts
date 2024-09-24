@@ -28,7 +28,12 @@ class AuthController extends BaseController {
       return;
     }
 
-    res.json({ _id: user._id, username: user.username, email: user.email });
+    res.json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      favoritMovies: user.favoritMovies,
+    });
   });
 
   public signup = this.handleRequest(
