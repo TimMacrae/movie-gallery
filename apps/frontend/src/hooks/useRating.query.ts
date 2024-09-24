@@ -18,5 +18,6 @@ export const useRating = (movie_id: string) => {
   return useQuery({
     queryKey: [APIROUTES.QUERY_KEYS.RATING, movie_id],
     queryFn: () => getRating(movie_id),
+    retry: 1,
   });
 };

@@ -17,5 +17,6 @@ export const useGalleryMovies = () => {
   return useQuery({
     queryKey: [APIROUTES.QUERY_KEYS.GALLERY_MOVIES],
     queryFn: () => getGalleryMovies(),
+    retry: 1,
   });
 };

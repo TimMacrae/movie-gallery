@@ -22,5 +22,6 @@ export const useComments = (commentIds: CommentIds) => {
   return useQuery({
     queryKey: [APIROUTES.QUERY_KEYS.COMMENTS],
     queryFn: () => getComments(commentIds),
+    retry: 1,
   });
 };

@@ -20,5 +20,6 @@ export const useMovies = (moviesQueryParams: MoviesQueryParams) => {
   return useQuery({
     queryKey: [APIROUTES.QUERY_KEYS.MOVIES, moviesQueryParams],
     queryFn: () => getMovies(moviesQueryParams),
+    retry: 1,
   });
 };

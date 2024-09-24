@@ -16,5 +16,6 @@ export const useUser = () => {
     queryKey: [APIROUTES.QUERY_KEYS.USER],
     queryFn: fetchUser,
     staleTime: 5 * 10000,
+    retry: 1,
   });
 };
