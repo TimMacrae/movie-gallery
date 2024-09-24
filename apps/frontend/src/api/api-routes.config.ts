@@ -13,6 +13,8 @@ export const APIROUTES = {
     GET_GALLERY_MOVIES: "/gallery",
     UPLOAD_POSTER: "/gallery/upload-poster",
     ADD_GALLERY_MOVIE: "/gallery",
+    GET_RATING: "/movies/rating",
+    POST_RATING: "/movies/rating",
   },
   URL: {
     HOME: "/",
@@ -29,5 +31,6 @@ export const APIROUTES = {
     COMMENTS: "COMMENTS",
     CREATE_COMMENT: "CREATE_COMMENT",
     GALLERY_MOVIES: "GALLERY_MOVIES",
+    RATING: "RATING",
   },
 };
