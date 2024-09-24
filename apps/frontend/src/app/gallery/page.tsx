@@ -8,8 +8,9 @@ import Link from "next/link";
 import React from "react";
 import { useGalleryMovies } from "../../hooks/useGalleryMovies.query";
 import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
+import { authProvider } from "@/src/components/auth/auth-provider.component";
 
-export default function GalleryPage() {
+function GalleryPage() {
   const { data, isLoading } = useGalleryMovies();
 
   return (
@@ -46,3 +47,5 @@ export default function GalleryPage() {
     </div>
   );
 }
+
+export default authProvider(GalleryPage);
