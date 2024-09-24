@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Movie from "../../model/movie-schema.model";
-import User from "../../model/user-schema.model";
+import Rating from "../../model/rating-schema.model";
 import { yearToDate } from "../../helper/year-to-date.helper";
 import { MoviesQueryParams } from "../../types/movie.type";
 import { BaseController } from "../utils/base.controller";
@@ -61,7 +61,7 @@ class MovieController extends BaseController {
     });
   });
 
-  public addToFavoritMovies = this.handleRequest(
+  public addToFavoriteMovies = this.handleRequest(
     async (req: Request, res: Response) => {
       const { movie_id, action } = req.body;
       const user = req.user as IUser;
@@ -72,14 +72,14 @@ class MovieController extends BaseController {
       }
 
       if (action === "add") {
-        if (!user.favoritMovies.includes(movie_id)) {
-          user.favoritMovies.push(movie_id);
+        if (!user.favoriteMovies.includes(movie_id)) {
+          user.favoriteMovies.push(movie_id);
           await user.save();
           res.status(200).json({ message: action });
         }
       }
       if (action === "remove") {
-        user.favoritMovies = user.favoritMovies.filter(
+        user.favoriteMovies = user.favoriteMovies.filter(
           (id) => id.toString() !== movie_id
         );
         await user.save();
@@ -87,6 +87,49 @@ class MovieController extends BaseController {
       }
     }
   );
+
+  public getMovieRating = this.handleRequest(
+    async (req: Request, res: Response) => {
+      const { movie_id } = req.query;
+      const movie = await Movie.findById(movie_id);
+
+      if (!movie) {
+        throw new Error("Movie not found");
+      }
+
+      const rating = await Rating.findOne({ movie_id, user_id: req.user?._id });
+
+      res.status(200).json(rating);
+    }
+  );
+
+  public rateMovie = this.handleRequest(async (req: Request, res: Response) => {
+    const { movie_id, rating } = req.body;
+    const user = req.user as IUser;
+
+    const movie = await Movie.findById(movie_id);
+    if (!movie) {
+      throw new Error("Movie not found");
+    }
+
+    const existingRating = await Rating.findOne({
+      movie_id,
+      user_id: user._id,
+    });
+
+    if (existingRating) {
+      existingRating.rating = rating;
+      await existingRating.save();
+    } else {
+      await Rating.create({
+        movie_id,
+        user_id: user._id,
+        rating,
+      });
+    }
+
+    res.status(200).json({ message: "Rating added" });
+  });
 }
 
 export default new MovieController();

@@ -4,37 +4,40 @@ import axios from "axios";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { GalleryMovie } from "@/src/types/gallery-movies.type";
-import { Movie } from "@/src/types/movie.type";
+import { Rating } from "@/src/types/movie.type";
 
 axios.defaults.withCredentials = true;
 
-const postAddGalleryMovie = async (movie: GalleryMovie): Promise<Movie> => {
-  const { data } = await axios.post<Movie>(
-    `${APIROUTES.API.ENDPOINT}${APIROUTES.API.ADD_GALLERY_MOVIE}`,
-    { movie }
+interface RateMovieValues {
+  movie_id: string;
+  rating: number;
+}
+
+const postRateMovie = async (values: RateMovieValues): Promise<Rating> => {
+  const { data } = await axios.post<Rating>(
+    `${APIROUTES.API.ENDPOINT}${APIROUTES.API.POST_RATING}`,
+    values
   );
   return data;
 };
 
-export const useAddGalleryMovieMutation = () => {
+export const useRateMovieMutation = () => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
   return useMutation({
-    mutationFn: postAddGalleryMovie,
+    mutationFn: postRateMovie,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [APIROUTES.QUERY_KEYS.GALLERY_MOVIES],
+        queryKey: [APIROUTES.QUERY_KEYS.RATING],
       });
-      toast({
-        title: "Success",
-        description: "Movies is successfully created!",
+      queryClient.invalidateQueries({
+        queryKey: [APIROUTES.QUERY_KEYS.MOVIES],
       });
     },
     onError: (error) => {
       toast({
         variant: "destructive",
-        title: "Error",
+        title: "Error, could not rate the movie",
         description: error?.message || "Something went wrong.",
       });
     },
