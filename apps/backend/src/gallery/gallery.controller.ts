@@ -43,7 +43,6 @@ class GalleryController extends BaseController {
         res.status(404).json({ message: "Movie not valid" });
         return;
       }
-      console.log("👻 => ", movie);
       const updatedMovie = await Movie.findByIdAndUpdate(movie._id, movie, {
         new: true,
       });

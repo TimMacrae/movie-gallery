@@ -22,8 +22,7 @@ export const useAddGalleryMovieMutation = () => {
   const { toast } = useToast();
   return useMutation({
     mutationFn: postAddGalleryMovie,
-    onSuccess: (data: Movie) => {
-      console.log("🐳 => data:", data);
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [APIROUTES.QUERY_KEYS.GALLERY_MOVIES],
       });

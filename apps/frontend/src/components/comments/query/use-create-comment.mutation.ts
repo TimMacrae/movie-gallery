@@ -25,12 +25,10 @@ export const useCreateCommentMutation = () => {
   return useMutation({
     mutationFn: postCreateComment,
     onSuccess: (data: Comment) => {
-      console.log("🐳 => data:", data);
       queryClient.setQueryData(
         [APIROUTES.QUERY_KEYS.COMMENTS],
         (oldData: Comment[]) => {
           oldData ? oldData.push(data) : oldData;
-          console.log("🍉 => ", oldData);
         }
       );
 

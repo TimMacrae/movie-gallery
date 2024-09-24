@@ -28,8 +28,7 @@ export const useMarkFavoriteMovieMutation = () => {
   const { toast } = useToast();
   return useMutation({
     mutationFn: postMarkFavoriteMovie,
-    onSuccess: (data: Movie) => {
-      console.log("🐳 => data:", data);
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [APIROUTES.QUERY_KEYS.USER],
       });
