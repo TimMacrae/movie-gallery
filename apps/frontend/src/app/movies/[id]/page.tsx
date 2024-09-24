@@ -4,11 +4,12 @@ import { LoadingSpinner } from "@/src/components/loading-spinner";
 import { Comments } from "@/src/components/comments/comments.component";
 import { MovieDetailItem } from "@/src/components/movies/movie-detail-item.component";
 import { useMovies } from "@/src/hooks/useMovies.query";
-import { Star } from "lucide-react";
 import Image from "next/image";
 import { APIROUTES } from "@/src/api/api-routes.config";
 import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
 import { MovieFavorite } from "@/src/components/movies/movie-favorite.component";
+import { MovieRating } from "@/src/components/movies/movie-rating.component";
+import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface MoviePageProps {
   params: {
@@ -74,14 +75,11 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
                 name={"Avarage rating: "}
                 value={`${averageRating} `}
               >
-                <Star
-                  size={18}
-                  className="text-yellow-400 ml-1 inline mt-[-4px]"
-                />
+                <StarFilledIcon className="text-yellow-400 ml-1 w-5 h-5 inline-block mt-[-4px]" />
               </MovieDetailItem>
 
               <MovieDetailItem name={"Ratings: "} value={`${ratings}`} />
-
+              <MovieRating movie_id={_id} />
               <MovieDetailItem name={"Comments: "} value={`${commentsTotal}`} />
               <MovieDetailItem name={"Genre: "} value={`${genre}`} />
               <MovieDetailItem name={"Plot: "} value={`${plot}`} />
