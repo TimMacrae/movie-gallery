@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import Movie from "../../model/movie-schema.model";
+import User from "../../model/user-schema.model";
 import { yearToDate } from "../../helper/year-to-date.helper";
 import { MoviesQueryParams } from "../../types/movie.type";
 import { BaseController } from "../utils/base.controller";
+import { IUser } from "apps/backend/types/user.type";
 
 class MovieController extends BaseController {
   public getMovies = this.handleRequest(async (req: Request, res: Response) => {
@@ -58,6 +60,33 @@ class MovieController extends BaseController {
       currentPage: Number(page),
     });
   });
+
+  public addToFavoritMovies = this.handleRequest(
+    async (req: Request, res: Response) => {
+      const { movie_id, action } = req.body;
+      const user = req.user as IUser;
+
+      const movie = await Movie.findById(movie_id);
+      if (!movie) {
+        throw new Error("Movie not found");
+      }
+
+      if (action === "add") {
+        if (!user.favoritMovies.includes(movie_id)) {
+          user.favoritMovies.push(movie_id);
+          await user.save();
+          res.status(200).json({ message: action });
+        }
+      }
+      if (action === "remove") {
+        user.favoritMovies = user.favoritMovies.filter(
+          (id) => id.toString() !== movie_id
+        );
+        await user.save();
+        res.status(200).json({ message: action });
+      }
+    }
+  );
 }
 
 export default new MovieController();
