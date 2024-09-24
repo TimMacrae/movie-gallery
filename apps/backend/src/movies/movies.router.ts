@@ -10,10 +10,8 @@ router.post(
   authProtectionMiddleware,
   MovieController.addToFavoriteMovies
 );
-router.get(
-  "/ratings",
-  authProtectionMiddleware,
-  MovieController.getMovieRatings
-);
+router.get("/rating", authProtectionMiddleware, MovieController.getMovieRating);
+
+router.post("/rating", authProtectionMiddleware, MovieController.rateMovie);
 
 export default router;
