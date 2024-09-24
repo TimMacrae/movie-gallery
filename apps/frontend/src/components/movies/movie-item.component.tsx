@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { Movie } from "../../types/movie.type";
 import React from "react";
-import { Star } from "lucide-react";
 import { APIROUTES } from "@/src/api/api-routes.config";
+import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface MovieItemProps {
   movie: Movie;
@@ -37,7 +37,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
 
         <p className="text-white flex items-center">
           {`Avarage rating: ${averageRating}`}
-          <Star size={15} className="text-yellow-400 ml-1" />
+          <StarFilledIcon className="text-yellow-400 ml-1 w-4 h-4 inline-block mt-[-2px]" />
         </p>
         <p className="text-white flex items-center">{`Ratings:${ratings}`}</p>
         <p className="text-white flex items-center">{`Comments: ${commentsTotal}`}</p>
