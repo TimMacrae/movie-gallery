@@ -5,7 +5,6 @@ import { SignupResponse } from "@/src/components/auth/zod/signup-form-schema.zod
 import { SigninFormValues } from "@/src/components/auth/zod/signin-form-schema.zod";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { setToken } from "@/src/utils/token";
 import { useToast } from "@/hooks/use-toast";
 
 axios.defaults.withCredentials = true;
@@ -27,7 +26,6 @@ export const useSigninUserMutation = () => {
   return useMutation({
     mutationFn: signinUser,
     onSuccess: (data: SignupResponse) => {
-      if (data.token) setToken(data.token);
       queryClient.setQueryData([APIROUTES.QUERY_KEYS.USER], data);
       toast({
         title: "Success",

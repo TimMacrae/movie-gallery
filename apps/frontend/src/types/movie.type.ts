@@ -15,6 +15,7 @@ export type Genre = (typeof genres)[number];
 
 export interface Movie {
   _id: string;
+  user_id: string;
   title: string;
   poster: string;
   release_date: number;

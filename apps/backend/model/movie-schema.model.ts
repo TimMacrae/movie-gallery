@@ -24,8 +24,8 @@ const movieSchema: Schema = new Schema({
   plot: { type: String, required: true },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   commentsTotal: { type: Number, default: 0 },
-  averageRating: { type: Number },
-  ratings: { type: Number },
+  averageRating: { type: Number, default: 0 },
+  ratings: { type: Number, default: 0 },
 });
 
 const Movie = mongoose.model<IMovie>("Movie", movieSchema);

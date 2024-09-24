@@ -24,11 +24,13 @@ class CommentController extends BaseController {
       const user = await User.findById(user_id);
       if (!user) {
         res.status(404).json({ message: "User not found" });
+        return;
       }
 
       const movie = await Movie.findById(movie_id);
       if (!movie) {
         res.status(404).json({ message: "Movie not found" });
+        return;
       }
 
       const newComment = new Comment({

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Movie } from "../../types/movie.type";
 import React from "react";
 import { Star } from "lucide-react";
+import { APIROUTES } from "@/src/api/api-routes.config";
 
 interface MovieItemProps {
   movie: Movie;
@@ -22,7 +23,13 @@ export const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-xl shadow-lg">
-      <Image src={poster} alt={title} layout="fill" objectFit="cover" />
+      <Image
+        src={`${APIROUTES.API.ENDPOINT}${poster}`}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+        unoptimized
+      />
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
         <h1 className="text-white text-xl font-bold">{title}</h1>
         <p className="text-white">{`Release year:  ${releaseYear}`}</p>

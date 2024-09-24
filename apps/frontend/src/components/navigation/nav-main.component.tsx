@@ -24,7 +24,7 @@ export const NavMain: React.FC = () => {
 
       {data && (
         <Link
-          href={APIROUTES.URL.MY_GALLERY}
+          href={APIROUTES.URL.GALLERY}
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           Gallery

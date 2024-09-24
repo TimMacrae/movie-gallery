@@ -6,6 +6,9 @@ import { MovieDetailItem } from "@/src/components/movies/movie-detail-item.compo
 import { useMovies } from "@/src/hooks/useMovies.query";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import { APIROUTES } from "@/src/api/api-routes.config";
+import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
+import { MovieFavorit } from "@/src/components/movies/movie-favorit.component";
 
 interface MoviePageProps {
   params: {
@@ -45,12 +48,14 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
 
   return (
     <>
-      <Card className="m-4 p-4">
+      <Card className="m-4 p-4 relative">
+        <GalleryMoviesDialog type="edit" movie={movie} />
+        <MovieFavorit movie_id={_id} />
         <div className="container">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-auto">
               <Image
-                src={movie.poster}
+                src={`${APIROUTES.API.ENDPOINT}${movie.poster}`}
                 alt={movie.title}
                 width={400}
                 height={650}
