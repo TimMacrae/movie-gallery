@@ -7,6 +7,17 @@ import { BaseController } from "../utils/base.controller";
 import { IUser } from "apps/backend/types/user.type";
 
 class MovieController extends BaseController {
+  getMovieRatings(
+    arg0: string,
+    authProtectionMiddleware: (
+      req: Request,
+      res: Response,
+      next: import("express").NextFunction
+    ) => Promise<Response<any, Record<string, any>> | undefined>,
+    getMovieRatings: any
+  ) {
+    throw new Error("Method not implemented.");
+  }
   public getMovies = this.handleRequest(async (req: Request, res: Response) => {
     const {
       page = 1,
@@ -61,7 +72,7 @@ class MovieController extends BaseController {
     });
   });
 
-  public addToFavoritMovies = this.handleRequest(
+  public addToFavoriteMovies = this.handleRequest(
     async (req: Request, res: Response) => {
       const { movie_id, action } = req.body;
       const user = req.user as IUser;
@@ -72,14 +83,14 @@ class MovieController extends BaseController {
       }
 
       if (action === "add") {
-        if (!user.favoritMovies.includes(movie_id)) {
-          user.favoritMovies.push(movie_id);
+        if (!user.favoriteMovies.includes(movie_id)) {
+          user.favoriteMovies.push(movie_id);
           await user.save();
           res.status(200).json({ message: action });
         }
       }
       if (action === "remove") {
-        user.favoritMovies = user.favoritMovies.filter(
+        user.favoriteMovies = user.favoriteMovies.filter(
           (id) => id.toString() !== movie_id
         );
         await user.save();

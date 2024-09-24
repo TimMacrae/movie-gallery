@@ -6,9 +6,14 @@ const router = express.Router();
 
 router.get("/", MovieController.getMovies);
 router.post(
-  "/favorit",
+  "/favorite",
   authProtectionMiddleware,
-  MovieController.addToFavoritMovies
+  MovieController.addToFavoriteMovies
+);
+router.get(
+  "/ratings",
+  authProtectionMiddleware,
+  MovieController.getMovieRatings
 );
 
 export default router;

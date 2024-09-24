@@ -8,7 +8,7 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import { APIROUTES } from "@/src/api/api-routes.config";
 import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
-import { MovieFavorit } from "@/src/components/movies/movie-favorit.component";
+import { MovieFavorite } from "@/src/components/movies/movie-favorite.component";
 
 interface MoviePageProps {
   params: {
@@ -50,7 +50,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
     <>
       <Card className="m-4 p-4 relative">
         <GalleryMoviesDialog type="edit" movie={movie} />
-        <MovieFavorit movie_id={_id} />
+        <MovieFavorite movie_id={_id} />
         <div className="container">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-auto">
@@ -81,6 +81,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
               </MovieDetailItem>
 
               <MovieDetailItem name={"Ratings: "} value={`${ratings}`} />
+
               <MovieDetailItem name={"Comments: "} value={`${commentsTotal}`} />
               <MovieDetailItem name={"Genre: "} value={`${genre}`} />
               <MovieDetailItem name={"Plot: "} value={`${plot}`} />

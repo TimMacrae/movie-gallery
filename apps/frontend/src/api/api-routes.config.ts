@@ -7,7 +7,7 @@ export const APIROUTES = {
     GET_USER: "/auth/user",
     GET_MOVIES: "/movies",
     GET_MOVIE: "/movies/movie",
-    POST_FAVORIT_MOVIE: "/movies/favorit",
+    POST_FAVORITE_MOVIE: "/movies/favorite",
     POST_COMMENTS: "/comments",
     POST_CREATE_COMMENT: "/comments/create",
     GET_GALLERY_MOVIES: "/gallery",

@@ -8,26 +8,26 @@ import { Movie } from "@/src/types/movie.type";
 
 axios.defaults.withCredentials = true;
 
-interface MarkFavoritMovieValues {
+interface MarkFavoriteMovieValues {
   movie_id: string;
   action: "add" | "remove";
 }
 
-const postMarkFavoritMovie = async (
-  values: MarkFavoritMovieValues
+const postMarkFavoriteMovie = async (
+  values: MarkFavoriteMovieValues
 ): Promise<Movie> => {
   const { data } = await axios.post<Movie>(
-    `${APIROUTES.API.ENDPOINT}${APIROUTES.API.POST_FAVORIT_MOVIE}`,
+    `${APIROUTES.API.ENDPOINT}${APIROUTES.API.POST_FAVORITE_MOVIE}`,
     values
   );
   return data;
 };
 
-export const useMarkFavoritMovieMutation = () => {
+export const useMarkFavoriteMovieMutation = () => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
   return useMutation({
-    mutationFn: postMarkFavoritMovie,
+    mutationFn: postMarkFavoriteMovie,
     onSuccess: (data: Movie) => {
       console.log("🐳 => data:", data);
       queryClient.invalidateQueries({
