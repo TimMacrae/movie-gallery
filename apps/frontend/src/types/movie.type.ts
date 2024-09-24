@@ -57,3 +57,10 @@ export interface Comment {
   user_id: { username: string; _id: string };
   comment: string;
 }
+
+export interface Rating {
+  _id: string;
+  movie_id: string;
+  user_id: string;
+  rating: number;
+}
