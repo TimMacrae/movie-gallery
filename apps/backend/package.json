@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only server.ts",
+    "build": "webpack --config webpack.config.js",
     "test": "jest"
   },
   "keywords": [],
@@ -42,6 +43,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
   }
 }
