@@ -31,7 +31,7 @@ export const NavSub: React.FC = () => {
             Movies
           </Link>
           <Link
-            href={APIROUTES.URL.MY_GALLERY}
+            href={APIROUTES.URL.GALLERY}
             className="text-muted-foreground hover:text-foreground"
           >
             My Gallery
