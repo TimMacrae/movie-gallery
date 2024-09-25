@@ -48,8 +48,9 @@ const PaginationLink = ({
   className,
   isActive,
   size = "icon",
+  href,
   ...props
-}: PaginationLinkProps<typeof Link>) => (
+}: PaginationLinkProps & { href: string }) => (
   <Link
     aria-current={isActive ? "page" : undefined}
     className={cn(
@@ -59,6 +60,7 @@ const PaginationLink = ({
       }),
       className
     )}
+    href={href}
     {...props}
   />
 );
