@@ -28,7 +28,7 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import { CommentDialogFormSchema } from "./zod/comment-dialog-form-schema.zod";
 import { useCreateCommentMutation } from "./query/use-create-comment.mutation";
-import { useUser } from "@/src/hooks/useUser.query";
+import { useUser } from "@/hooks/useUser.query";
 
 interface CommentDialogProps {
   movieId: string;

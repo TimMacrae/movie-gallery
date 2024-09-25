@@ -1,4 +1,4 @@
-import { useSignoutUserMutation } from "@/src/components/auth/query/use-signout-user.mutation";
+import { useSignoutUserMutation } from "@/components/auth/query/use-signout-user.mutation";
 import Link from "next/link";
 import { CircleUser } from "lucide-react";
 
@@ -11,8 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { useUser } from "@/src/hooks/useUser.query";
+import { APIROUTES } from "@/api/api-routes.config";
+import { useUser } from "@/hooks/useUser.query";
 
 export const NavUser: React.FC = () => {
   const { data } = useUser();

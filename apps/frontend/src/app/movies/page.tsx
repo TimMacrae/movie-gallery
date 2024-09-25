@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { useMovies } from "../../hooks/useMovies.query";
-import { MovieItem } from "../../components/movies/movie-item.component";
+import { useMovies } from "@/hooks/useMovies.query";
+import { MovieItem } from "@/components/movies/movie-item.component";
 import Link from "next/link";
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { MoviesPagination } from "@/src/components/movies/movie-pagination.component";
-import { MoviesFilter } from "@/src/components/movies/movies-filter.component";
-import { MoviesQueryFilter } from "@/src/types/movie.type";
+import { APIROUTES } from "@/api/api-routes.config";
+import { MoviesPagination } from "@/components/movies/movie-pagination.component";
+import { MoviesFilter } from "@/components/movies/movies-filter.component";
+import { MoviesQueryFilter } from "@/types/movie.type";
 import { Card } from "@/components/ui/card";
-import { LoadingSpinner } from "@/src/components/loading-spinner";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default function MoviesPage() {
   const [pageNumber, setPageNumber] = useState(1);

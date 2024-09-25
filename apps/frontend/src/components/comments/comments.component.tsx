@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import { useComments } from "@/src/hooks/useComments.query";
-import { CommentIds } from "@/src/types/movie.type";
+import { useComments } from "@/hooks/useComments.query";
+import { CommentIds } from "@/types/movie.type";
 import { Comment } from "./comment.component";
 import { CommentDialog } from "./comment-dialog.component";
 

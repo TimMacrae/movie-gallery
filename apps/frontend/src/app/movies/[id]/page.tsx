@@ -1,14 +1,14 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import { LoadingSpinner } from "@/src/components/loading-spinner";
-import { Comments } from "@/src/components/comments/comments.component";
-import { MovieDetailItem } from "@/src/components/movies/movie-detail-item.component";
-import { useMovies } from "@/src/hooks/useMovies.query";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { Comments } from "@/components/comments/comments.component";
+import { MovieDetailItem } from "@/components/movies/movie-detail-item.component";
+import { useMovies } from "@/hooks/useMovies.query";
 import Image from "next/image";
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
-import { MovieFavorite } from "@/src/components/movies/movie-favorite.component";
-import { MovieRating } from "@/src/components/movies/movie-rating.component";
+import { APIROUTES } from "@/api/api-routes.config";
+import { GalleryMoviesDialog } from "@/components/gallery/gallery-movie-dialog.component";
+import { MovieFavorite } from "@/components/movies/movie-favorite.component";
+import { MovieRating } from "@/components/movies/movie-rating.component";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface MoviePageProps {

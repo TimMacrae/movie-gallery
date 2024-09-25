@@ -1,5 +1,5 @@
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { useUser } from "@/src/hooks/useUser.query";
+import { APIROUTES } from "@/api/api-routes.config";
+import { useUser } from "@/hooks/useUser.query";
 import { Popcorn } from "lucide-react";
 import Link from "next/link";
 

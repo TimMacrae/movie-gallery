@@ -1,14 +1,14 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { LoadingSpinner } from "@/src/components/loading-spinner";
-import { MovieItem } from "@/src/components/movies/movie-item.component";
+import { APIROUTES } from "@/api/api-routes.config";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { MovieItem } from "@/components/movies/movie-item.component";
 import Link from "next/link";
 import React from "react";
 import { useGalleryMovies } from "../../hooks/useGalleryMovies.query";
-import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
-import { authProvider } from "@/src/components/auth/auth-provider.component";
+import { GalleryMoviesDialog } from "@/components/gallery/gallery-movie-dialog.component";
+import { authProvider } from "@/components/auth/auth-provider.component";
 
 function GalleryPage() {
   const { data, isLoading } = useGalleryMovies();

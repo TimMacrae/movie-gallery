@@ -1,11 +1,11 @@
 "use client";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import axios from "axios";
-import { CreateCommentValues } from "@/src/components/comments/zod/create-comment-schema.zod";
+import { CreateCommentValues } from "@/components/comments/zod/create-comment-schema.zod";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { Comment } from "@/src/types/movie.type";
+import { Comment } from "@/types/movie.type";
 
 axios.defaults.withCredentials = true;
 

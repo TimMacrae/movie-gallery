@@ -26,7 +26,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { Plus, Edit } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useUser } from "@/src/hooks/useUser.query";
+import { useUser } from "@/hooks/useUser.query";
 import {
   GalleryMovieDialogSchema,
   GalleryMovieDialogValues,
@@ -39,7 +39,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { genres, Movie } from "@/src/types/movie.type";
+import { genres, Movie } from "@/types/movie.type";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -50,7 +50,7 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import axios from "axios";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import { useAddGalleryMovieMutation } from "./query/use-add-gallery-movie.mutation";
 import { useUpdateGalleryMovieMutation } from "./query/use-update-gallery-movie.mutation";
 import { useToast } from "@/hooks/use-toast";

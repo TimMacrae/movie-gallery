@@ -1,10 +1,10 @@
 "use client";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import axios from "axios";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { Rating } from "@/src/types/movie.type";
+import { Rating } from "@/types/movie.type";
 
 axios.defaults.withCredentials = true;
 

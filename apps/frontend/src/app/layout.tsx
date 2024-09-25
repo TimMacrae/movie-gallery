@@ -4,7 +4,7 @@ import "./globals.css";
 import ReactQueryProvider from "./react-query-provider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "@/components/ui/toaster";
-import { NavigationHeader } from "@/src/components/navigation/navigation-header.component";
+import { NavigationHeader } from "@/components/navigation/navigation-header.component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

@@ -1,4 +1,4 @@
-import { genres } from "@/src/types/movie.type";
+import { genres } from "@/types/movie.type";
 import { z } from "zod";
 
 export const GalleryMovieDialogSchema = z.object({

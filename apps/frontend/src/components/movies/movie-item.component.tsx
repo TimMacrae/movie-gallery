@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Movie } from "../../types/movie.type";
 import React from "react";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface MovieItemProps {

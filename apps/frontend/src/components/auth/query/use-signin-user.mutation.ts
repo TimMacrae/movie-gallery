@@ -1,8 +1,8 @@
 "use client";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import axios from "axios";
-import { SignupResponse } from "@/src/components/auth/zod/signup-form-schema.zod";
-import { SigninFormValues } from "@/src/components/auth/zod/signin-form-schema.zod";
+import { SignupResponse } from "@/components/auth/zod/signup-form-schema.zod";
+import { SigninFormValues } from "@/components/auth/zod/signin-form-schema.zod";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";

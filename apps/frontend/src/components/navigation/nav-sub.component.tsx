@@ -4,7 +4,7 @@ import { Menu, Popcorn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 
 export const NavSub: React.FC = () => {
   return (

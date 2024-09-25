@@ -1,5 +1,5 @@
 "use client";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import axios from "axios";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";

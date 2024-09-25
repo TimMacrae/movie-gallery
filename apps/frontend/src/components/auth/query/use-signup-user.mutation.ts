@@ -1,10 +1,10 @@
 "use client";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import axios from "axios";
 import {
   SignupFormValues,
   SignupResponse,
-} from "@/src/components/auth/zod/signup-form-schema.zod";
+} from "@/components/auth/zod/signup-form-schema.zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SignupForm } from "@/src/components/auth/signup-form.component";
+import { SignupForm } from "@/components/auth/signup-form.component";
 
 export default function SignupPage() {
   return (

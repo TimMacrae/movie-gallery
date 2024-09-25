@@ -1,7 +1,7 @@
 import { useEffect, ComponentType } from "react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/src/hooks/useUser.query";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { useUser } from "@/hooks/useUser.query";
+import { APIROUTES } from "@/api/api-routes.config";
 import { LoadingSpinner } from "../loading-spinner";
 
 interface WithAuthProps {}

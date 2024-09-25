@@ -12,11 +12,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import {
   signinFormSchema,
   SigninFormValues,
-} from "@/src/components/auth/zod/signin-form-schema.zod";
+} from "@/components/auth/zod/signin-form-schema.zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSigninUserMutation } from "./query/use-signin-user.mutation";

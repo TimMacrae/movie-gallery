@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/src/hooks/useUser.query";
+import { useUser } from "@/hooks/useUser.query";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { useMarkFavoriteMovieMutation } from "./query/use-mark-favorite-movie.mutation";
 
