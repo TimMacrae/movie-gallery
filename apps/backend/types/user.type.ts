@@ -8,3 +8,10 @@ export interface IUser extends Document {
   matchPassword: (enteredPassword: string) => Promise<boolean>;
   favoriteMovies: string[];
 }
+
+export interface IUserFlattened {
+  _id: string;
+  username: string;
+  email: string;
+  favoriteMovies?: string[];
+}

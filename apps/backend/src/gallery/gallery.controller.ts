@@ -4,10 +4,13 @@ import { BaseController } from "../utils/base.controller";
 import multer from "multer";
 import path from "path";
 import { v4 } from "uuid";
+import { IUser } from "../../types/user.type";
+import { IMovie, ResponseMovies } from "../../types/movie.type";
+import { ResponseError, ResponseMessage } from "../../types/response.type";
 
 class GalleryController extends BaseController {
   public getGalleryMovies = this.handleRequest(
-    async (req: Request, res: Response) => {
+    async (req: Request<{}, {}, IUser>, res: Response<ResponseMovies>) => {
       const { user } = req;
       const movies = await Movie.find({ user_id: user?._id });
       res.status(200).json({ movies: movies });
@@ -15,7 +18,10 @@ class GalleryController extends BaseController {
   );
 
   public addGalleryMovie = this.handleRequest(
-    async (req: Request, res: Response) => {
+    async (
+      req: Request<{}, {}, { movie: IMovie }>,
+      res: Response<ResponseMessage | IMovie>
+    ) => {
       const { user } = req;
       const { movie } = req.body;
 
@@ -35,8 +41,10 @@ class GalleryController extends BaseController {
   );
 
   public updateGalleryMovie = this.handleRequest(
-    async (req: Request, res: Response) => {
-      const { user } = req;
+    async (
+      req: Request<{}, {}, { movie: IMovie }>,
+      res: Response<ResponseMessage | IMovie | null>
+    ) => {
       const { movie } = req.body;
 
       if (!movie) {
@@ -50,8 +58,9 @@ class GalleryController extends BaseController {
       res.status(200).json(updatedMovie);
     }
   );
+
   public uploadPoster = this.handleRequest(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response<{ poster: string } | ResponseError>) => {
       const storage = multer.diskStorage({
         destination: path.join(
           __dirname + "../../../",

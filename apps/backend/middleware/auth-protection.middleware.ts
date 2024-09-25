@@ -26,7 +26,6 @@ export const authProtectionMiddleware = async (
 
   try {
     const decoded = verify(token, process.env.JWT_SECRET);
-    // check this method
     // @ts-ignore
     req.user = await User.findById(decoded.id);
     next();

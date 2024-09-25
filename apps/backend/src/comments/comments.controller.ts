@@ -3,10 +3,15 @@ import Comment from "../../model/comments-schema.model";
 import User from "../../model/user-schema.model";
 import Movie from "../../model/movie-schema.model";
 import { BaseController } from "../utils/base.controller";
+import { IComment, ResponseComment } from "../..//types/comment.type";
+import { ResponseMessage } from "apps/backend/types/response.type";
 
 class CommentController extends BaseController {
   public getComments = this.handleRequest(
-    async (req: Request, res: Response) => {
+    async (
+      req: Request<{}, {}, { commentIds: string[] }>,
+      res: Response<IComment[]>
+    ) => {
       const { commentIds } = req.body;
 
       const comments = await Comment.find({
@@ -18,7 +23,10 @@ class CommentController extends BaseController {
   );
 
   public createComment = this.handleRequest(
-    async (req: Request, res: Response) => {
+    async (
+      req: Request<{}, {}, IComment>,
+      res: Response<ResponseComment | ResponseMessage>
+    ) => {
       const { comment, user_id, movie_id } = req.body;
 
       const user = await User.findById(user_id);

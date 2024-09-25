@@ -6,3 +6,8 @@ export interface IRating extends Document {
   user_id: string;
   rating: number;
 }
+
+export interface RequestRating {
+  movie_id: string;
+  rating: number;
+}

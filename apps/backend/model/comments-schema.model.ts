@@ -1,11 +1,6 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import Movie from "./movie-schema.model";
-
-interface IComment extends Document {
-  comment: string;
-  user_id: mongoose.Types.ObjectId;
-  movie_id: mongoose.Types.ObjectId;
-}
+import { IComment } from "../types/comment.type";
 
 const commentSchema: Schema = new Schema({
   comment: { type: String, required: true, maxlength: 200 },
