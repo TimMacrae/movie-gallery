@@ -4,7 +4,7 @@ import User from "../../model/user-schema.model";
 import Movie from "../../model/movie-schema.model";
 import { BaseController } from "../utils/base.controller";
 import { IComment, ResponseComment } from "../..//types/comment.type";
-import { ResponseMessage } from "apps/backend/types/response.type";
+import { ResponseMessage } from "../../types/response.type";
 
 class CommentController extends BaseController {
   public getComments = this.handleRequest(
