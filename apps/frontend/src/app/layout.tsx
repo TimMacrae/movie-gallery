@@ -36,7 +36,8 @@ export default function RootLayout({
           <Toaster />
           {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
           <NavigationHeader />
-          {children}
+          <div className="container mx-auto max-w-screen-2xl">{children}</div>
+          <footer className="bg-black h-20 mt-24"></footer>
         </ReactQueryProvider>
       </body>
     </html>
