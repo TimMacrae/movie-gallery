@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { APIROUTES } from "@/api/api-routes.config";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { MovieItem } from "@/components/movies/movie-item.component";
@@ -14,8 +13,8 @@ function GalleryPage() {
   const { data, isLoading } = useGalleryMovies();
 
   return (
-    <div style={{ minHeight: `calc(100vh - 80px` }}>
-      <Card className="m-4">
+    <div>
+      <div className="mt-12">
         <div className="flex justify-between m-4">
           <div className="text-2xl font-semibold">Movie Gallery</div>
           <GalleryMoviesDialog type="add" />
@@ -43,7 +42,7 @@ function GalleryPage() {
             ))}
           </div>
         )}
-      </Card>
+      </div>
     </div>
   );
 }

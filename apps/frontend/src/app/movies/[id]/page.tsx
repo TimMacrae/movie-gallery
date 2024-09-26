@@ -1,5 +1,4 @@
 "use client";
-import { Card } from "@/components/ui/card";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { Comments } from "@/components/comments/comments.component";
 import { MovieDetailItem } from "@/components/movies/movie-detail-item.component";
@@ -49,7 +48,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
 
   return (
     <>
-      <Card className="m-4 p-4 relative">
+      <div className="m-4 mt-12 p-4 relative ">
         <GalleryMoviesDialog type="edit" movie={movie} />
         <MovieFavorite movie_id={_id} />
         <div className="container">
@@ -86,7 +85,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
             </div>
           </div>
         </div>
-      </Card>
+      </div>
       <Comments movieId={_id} commentIds={comments} />
     </>
   );
