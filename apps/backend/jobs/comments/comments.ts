@@ -1,6 +1,6 @@
-import { Comment } from "../../types/comment.type";
+import { CommentFlattened } from "../../types/comment.type";
 
-export const comments: Comment[] = [
+export const comments: CommentFlattened[] = [
   {
     _id: "64e407f9c6f946a2a7b2e512",
     user_id: "64e40812fc98c72c8a6b1b25",
