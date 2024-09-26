@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { APIROUTES } from "@/api/api-routes.config";
+import { User } from "@/types/user.type";
 
 axios.defaults.withCredentials = true;
 
-const fetchUser = async () => {
-  const { data } = await axios.get(
+const fetchUser = async (): Promise<User> => {
+  const { data } = await axios.get<User>(
     `${APIROUTES.API.ENDPOINT}${APIROUTES.API.GET_USER}`
   );
   return data;
