@@ -139,13 +139,13 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
   };
 
   const hasError = Object.keys(form.formState.errors).length > 0;
-
   // If the user is not the owner of the movie, do not show the dialog
   if (!user) return null;
-  if (user._id !== movie?.user_id) return null;
+  if (user?._id !== movie?.user_id && isTypeEdit) return null;
 
+  const editClasses = "absolute top-4 right-16";
   return (
-    <div className="absolute top-4 right-16">
+    <div className={isTypeEdit ? editClasses : ""}>
       <Dialog
         open={isOpen}
         onOpenChange={(pre) => {
@@ -153,7 +153,7 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
         }}
       >
         <DialogTrigger asChild>
-          <Button variant="outline" className="px-2 py-1">
+          <Button variant="outline" className="px-2">
             {isTypeAdd && <Plus className="h-4 w-4" />}
             {isTypeEdit && <Edit className="h-4 w-4" />}
           </Button>

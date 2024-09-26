@@ -12,12 +12,12 @@ export const NavMain: React.FC = () => {
         href={APIROUTES.URL.HOME}
         className="flex items-center gap-2 text-lg font-semibold md:text-base"
       >
-        <Popcorn className="h-6 w-6" />
+        <Popcorn className="h-6 w-6 text-white" />
         <span className="sr-only">Movie gallery</span>
       </Link>
       <Link
         href={APIROUTES.URL.MOVIES}
-        className="text-muted-foreground transition-colors hover:text-foreground"
+        className="text-muted-foreground transition-colors hover:text-gray-300 text-white"
       >
         Movies
       </Link>
@@ -25,7 +25,7 @@ export const NavMain: React.FC = () => {
       {data && (
         <Link
           href={APIROUTES.URL.GALLERY}
-          className="text-muted-foreground transition-colors hover:text-foreground"
+          className="text-muted-foreground transition-colors hover:text-gray-300 text-white"
         >
           Gallery
         </Link>

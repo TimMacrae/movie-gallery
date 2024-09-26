@@ -11,12 +11,12 @@ export const NavSub: React.FC = () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-          <Menu className="h-5 w-5" />
+          <Menu className="h-5 w-5 text-white" />
           <span className="sr-only">Toggle navigation menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
-        <nav className="grid gap-6 text-lg font-medium">
+      <SheetContent side="left" className="bg-withe">
+        <nav className="grid gap-6 text-lg font-medium text-white">
           <Link
             href="#"
             className="flex items-center gap-2 text-lg font-semibold"
@@ -26,15 +26,15 @@ export const NavSub: React.FC = () => {
           </Link>
           <Link
             href={APIROUTES.URL.MOVIES}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground text-white"
           >
             Movies
           </Link>
           <Link
             href={APIROUTES.URL.GALLERY}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground text-white"
           >
-            My Gallery
+            Gallery
           </Link>
         </nav>
       </SheetContent>
