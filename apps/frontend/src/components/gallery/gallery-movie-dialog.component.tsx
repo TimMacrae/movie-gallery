@@ -26,7 +26,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { Plus, Edit } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useUser } from "@/src/hooks/useUser.query";
+import { useUser } from "@/hooks/useUser.query";
 import {
   GalleryMovieDialogSchema,
   GalleryMovieDialogValues,
@@ -39,7 +39,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { genres, Movie } from "@/src/types/movie.type";
+import { genres, Movie } from "@/types/movie.type";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -50,7 +50,7 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import axios from "axios";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import { useAddGalleryMovieMutation } from "./query/use-add-gallery-movie.mutation";
 import { useUpdateGalleryMovieMutation } from "./query/use-update-gallery-movie.mutation";
 import { useToast } from "@/hooks/use-toast";
@@ -139,13 +139,13 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
   };
 
   const hasError = Object.keys(form.formState.errors).length > 0;
-
   // If the user is not the owner of the movie, do not show the dialog
   if (!user) return null;
-  if (user._id !== movie?.user_id) return null;
+  if (user?._id !== movie?.user_id && isTypeEdit) return null;
 
+  const editClasses = "absolute top-4 right-16";
   return (
-    <div className="absolute top-4 right-16">
+    <div className={isTypeEdit ? editClasses : ""}>
       <Dialog
         open={isOpen}
         onOpenChange={(pre) => {
@@ -153,14 +153,17 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
         }}
       >
         <DialogTrigger asChild>
-          <Button variant="outline" className="px-2 py-1">
+          <Button variant="outline" className="px-2">
             {isTypeAdd && <Plus className="h-4 w-4" />}
             {isTypeEdit && <Edit className="h-4 w-4" />}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md bg-white">
           <DialogHeader>
-            <DialogTitle>Add a movie</DialogTitle>
+            <DialogTitle>
+              {isTypeAdd && "ADD MOVIE"}
+              {isTypeEdit && "EDIT MOVIE"}
+            </DialogTitle>
             <DialogDescription>
               {isTypeAdd && "Create a movie and add it to the gallery"}
               {isTypeEdit && "Edit the movie and save it to the gallery"}
@@ -314,8 +317,8 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
 
               <DialogFooter className="sm:justify-start">
                 <Button type="submit" disabled={hasError}>
-                  {isTypeAdd && "Add movie to gallery"}
-                  {isTypeEdit && "Update movie"}
+                  {isTypeAdd && "ADD MOVIE TO GALLERY"}
+                  {isTypeEdit && "UPDATE MOVIE"}
                 </Button>
               </DialogFooter>
             </form>

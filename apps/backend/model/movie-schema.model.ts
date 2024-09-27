@@ -1,18 +1,5 @@
-import mongoose, { Schema, Document } from "mongoose";
-
-interface IMovie extends Document {
-  title: string;
-  user_id: mongoose.Types.ObjectId;
-  release_date: Date;
-  genre: string;
-  poster: string;
-  duration: string;
-  plot: string;
-  comments: mongoose.Types.ObjectId[];
-  commentsTotal: number;
-  averageRating: number;
-  ratings: number;
-}
+import mongoose, { Schema } from "mongoose";
+import { IMovie } from "../types/movie.type";
 
 const movieSchema: Schema = new Schema({
   title: { type: String, required: true },

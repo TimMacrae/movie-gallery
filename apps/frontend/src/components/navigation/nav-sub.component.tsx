@@ -4,19 +4,19 @@ import { Menu, Popcorn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 
 export const NavSub: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-          <Menu className="h-5 w-5" />
+          <Menu className="h-5 w-5 text-white" />
           <span className="sr-only">Toggle navigation menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
-        <nav className="grid gap-6 text-lg font-medium">
+      <SheetContent side="left" className="bg-withe">
+        <nav className="grid gap-6 text-lg font-medium text-white">
           <Link
             href="#"
             className="flex items-center gap-2 text-lg font-semibold"
@@ -26,15 +26,15 @@ export const NavSub: React.FC = () => {
           </Link>
           <Link
             href={APIROUTES.URL.MOVIES}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground text-white"
           >
-            Movies
+            MOVIES
           </Link>
           <Link
-            href={APIROUTES.URL.MY_GALLERY}
-            className="text-muted-foreground hover:text-foreground"
+            href={APIROUTES.URL.GALLERY}
+            className="text-muted-foreground hover:text-foreground text-white"
           >
-            My Gallery
+            GALLERY
           </Link>
         </nav>
       </SheetContent>

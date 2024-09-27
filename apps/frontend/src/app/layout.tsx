@@ -4,7 +4,7 @@ import "./globals.css";
 import ReactQueryProvider from "./react-query-provider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "@/components/ui/toaster";
-import { NavigationHeader } from "@/src/components/navigation/navigation-header.component";
+import { NavigationHeader } from "@/components/navigation/navigation-header.component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,13 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-16`}
       >
         <ReactQueryProvider>
           <Toaster />
           {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
           <NavigationHeader />
-          {children}
+          <div className="container mx-auto max-w-screen-2xl">{children}</div>
         </ReactQueryProvider>
       </body>
     </html>

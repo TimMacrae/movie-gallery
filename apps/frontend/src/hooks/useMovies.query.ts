@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { APIROUTES } from "../api/api-routes.config";
-import { MoviesQueryParams, MoviesResponse } from "../types/movie.type";
+import { APIROUTES } from "@/api/api-routes.config";
+import { MoviesQueryParams, MoviesResponse } from "@/types/movie.type";
 
 export const getMovies = async (
   moviesQueryParams: MoviesQueryParams
@@ -20,5 +20,6 @@ export const useMovies = (moviesQueryParams: MoviesQueryParams) => {
   return useQuery({
     queryKey: [APIROUTES.QUERY_KEYS.MOVIES, moviesQueryParams],
     queryFn: () => getMovies(moviesQueryParams),
+    retry: 1,
   });
 };

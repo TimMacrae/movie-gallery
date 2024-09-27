@@ -11,11 +11,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import {
   signupFormSchema,
   SignupFormValues,
-} from "@/src/components/auth/zod/signup-form-schema.zod";
+} from "@/components/auth/zod/signup-form-schema.zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSignupUserMutation } from "./query/use-signup-user.mutation";
@@ -42,7 +42,7 @@ export const SignupForm: React.FC = () => {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-xl">Sign Up</CardTitle>
+        <CardTitle className="text-xl">SIGN UP</CardTitle>
         <CardDescription>
           Enter your information to create an account
         </CardDescription>
@@ -87,7 +87,7 @@ export const SignupForm: React.FC = () => {
               )}
             </div>
             <Button type="submit" className="w-full">
-              Create an account
+              CREATE ACCOUNT
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">

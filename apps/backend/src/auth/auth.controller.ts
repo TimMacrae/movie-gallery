@@ -8,36 +8,43 @@ import {
 import cookie, { serialize } from "cookie";
 import { verify } from "jsonwebtoken";
 import { BaseController } from "../utils/base.controller";
+import { IUserFlattened } from "../../types/user.type";
+import { ResponseMessage } from "../../types/response.type";
 
 class AuthController extends BaseController {
-  public getUser = this.handleRequest(async (req: Request, res: Response) => {
-    const cookies = cookie.parse(req.headers.cookie || "");
-    const token = cookies.token;
+  public getUser = this.handleRequest(
+    async (req: Request, res: Response<IUserFlattened | ResponseMessage>) => {
+      const cookies = cookie.parse(req.headers.cookie || "");
+      const token = cookies.token;
 
-    if (!token) {
-      res.status(401).json({ message: "Unauthorized" });
-      return;
+      if (!token) {
+        res.status(401).json({ message: "Unauthorized" });
+        return;
+      }
+
+      const decoded = verify(token, process.env.JWT_SECRET as string);
+      // @ts-ignore
+      const user = await User.findById(decoded?.id);
+
+      if (!user) {
+        res.status(404).json({ message: "User not found" });
+        return;
+      }
+
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        favoriteMovies: user.favoriteMovies,
+      });
     }
-
-    const decoded = verify(token, process.env.JWT_SECRET as string);
-    // @ts-ignore
-    const user = await User.findById(decoded?.id);
-
-    if (!user) {
-      res.status(404).json({ message: "User not found" });
-      return;
-    }
-
-    res.json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      favoriteMovies: user.favoriteMovies,
-    });
-  });
+  );
 
   public signup = this.handleRequest(
-    async (req: Request<{}, {}, SignupRequestBody>, res: Response) => {
+    async (
+      req: Request<{}, {}, SignupRequestBody>,
+      res: Response<IUserFlattened | ResponseMessage>
+    ) => {
       const { username, email, password } = req.body;
 
       const userExists = await User.findOne({ email });
@@ -64,12 +71,16 @@ class AuthController extends BaseController {
         _id: user._id,
         username: user.username,
         email: user.email,
+        favoriteMovies: user.favoriteMovies,
       });
     }
   );
 
   public signin = this.handleRequest(
-    async (req: Request<{}, {}, SigninRequestBody>, res: Response) => {
+    async (
+      req: Request<{}, {}, SigninRequestBody>,
+      res: Response<IUserFlattened | ResponseMessage>
+    ) => {
       const { email, password } = req.body;
 
       const user = await User.findOne({ email });
@@ -95,14 +106,17 @@ class AuthController extends BaseController {
         _id: user._id,
         username: user.username,
         email: user.email,
+        favoriteMovies: user.favoriteMovies,
       });
     }
   );
 
-  public signout = this.handleRequest(async (req: Request, res: Response) => {
-    res.clearCookie("token");
-    res.json({ message: "Logged out successfully" });
-  });
+  public signout = this.handleRequest(
+    async (req: Request, res: Response<ResponseMessage>) => {
+      res.clearCookie("token");
+      res.json({ message: "Logged out successfully" });
+    }
+  );
 }
 
 export default new AuthController();

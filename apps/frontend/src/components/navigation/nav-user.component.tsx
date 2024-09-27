@@ -1,4 +1,4 @@
-import { useSignoutUserMutation } from "@/src/components/auth/query/use-signout-user.mutation";
+import { useSignoutUserMutation } from "@/components/auth/query/use-signout-user.mutation";
 import Link from "next/link";
 import { CircleUser } from "lucide-react";
 
@@ -11,8 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { useUser } from "@/src/hooks/useUser.query";
+import { APIROUTES } from "@/api/api-routes.config";
+import { useUser } from "@/hooks/useUser.query";
 
 export const NavUser: React.FC = () => {
   const { data } = useUser();
@@ -24,7 +24,11 @@ export const NavUser: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="icon" className="rounded-full">
+        <Button
+          variant="secondary"
+          size="icon"
+          className="rounded-full bg-black text-white"
+        >
           <CircleUser className="h-5 w-5" />
           <span className="sr-only">Toggle user menu</span>
         </Button>
@@ -37,7 +41,7 @@ export const NavUser: React.FC = () => {
                 href={APIROUTES.URL.SIGNIN}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Signin
+                SIGNIN
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -45,7 +49,7 @@ export const NavUser: React.FC = () => {
                 href={APIROUTES.URL.SIGNUP}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Signup
+                SIGNUP
               </Link>
             </DropdownMenuItem>
           </>
@@ -57,7 +61,7 @@ export const NavUser: React.FC = () => {
               href="#"
               className="text-muted-foreground hover:text-foreground"
             >
-              Signout
+              SIGNOUT
             </Link>
           </DropdownMenuItem>
         )}

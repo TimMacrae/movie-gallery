@@ -9,7 +9,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { genres, MoviesQueryFilter } from "../../types/movie.type";
-import { Card } from "@/components/ui/card";
 
 const sortingOptions = [
   { value: "release_date", label: "Release Year" },
@@ -60,7 +59,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
   };
 
   return (
-    <Card className="p-4 m-4 mb-0">
+    <div className="p-4 mt-8 mb-0">
       <div className="flex w-full  items-center space-x-2">
         {/* Title filter */}
         <Input
@@ -135,6 +134,6 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
         </Button>
         <Button onClick={() => handleSearch()}>Search</Button>
       </div>
-    </Card>
+    </div>
   );
 };

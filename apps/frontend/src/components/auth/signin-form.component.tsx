@@ -12,11 +12,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { APIROUTES } from "@/src/api/api-routes.config";
+import { APIROUTES } from "@/api/api-routes.config";
 import {
   signinFormSchema,
   SigninFormValues,
-} from "@/src/components/auth/zod/signin-form-schema.zod";
+} from "@/components/auth/zod/signin-form-schema.zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSigninUserMutation } from "./query/use-signin-user.mutation";
@@ -42,7 +42,7 @@ export const SigninForm: React.FC = () => {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">LOGIN</CardTitle>
         <CardDescription>
           Enter your email below to login to your account
         </CardDescription>
@@ -69,7 +69,7 @@ export const SigninForm: React.FC = () => {
             )}
           </div>
           <Button type="submit" className="w-full">
-            Login
+            LOGIN
           </Button>
         </form>
         <div className="mt-4 text-center text-sm">

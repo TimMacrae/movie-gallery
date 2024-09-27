@@ -1,14 +1,13 @@
 "use client";
-import { Card } from "@/components/ui/card";
-import { LoadingSpinner } from "@/src/components/loading-spinner";
-import { Comments } from "@/src/components/comments/comments.component";
-import { MovieDetailItem } from "@/src/components/movies/movie-detail-item.component";
-import { useMovies } from "@/src/hooks/useMovies.query";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { Comments } from "@/components/comments/comments.component";
+import { MovieDetailItem } from "@/components/movies/movie-detail-item.component";
+import { useMovies } from "@/hooks/useMovies.query";
 import Image from "next/image";
-import { APIROUTES } from "@/src/api/api-routes.config";
-import { GalleryMoviesDialog } from "@/src/components/gallery/gallery-movie-dialog.component";
-import { MovieFavorite } from "@/src/components/movies/movie-favorite.component";
-import { MovieRating } from "@/src/components/movies/movie-rating.component";
+import { APIROUTES } from "@/api/api-routes.config";
+import { GalleryMoviesDialog } from "@/components/gallery/gallery-movie-dialog.component";
+import { MovieFavorite } from "@/components/movies/movie-favorite.component";
+import { MovieRating } from "@/components/movies/movie-rating.component";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface MoviePageProps {
@@ -49,7 +48,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
 
   return (
     <>
-      <Card className="m-4 p-4 relative">
+      <div className="m-4 mt-12 p-4 relative">
         <GalleryMoviesDialog type="edit" movie={movie} />
         <MovieFavorite movie_id={_id} />
         <div className="container">
@@ -64,8 +63,9 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
               />
             </div>
 
-            <div className="md:w-auto md:pl-8 pt-8">
-              <h1 className="text-4xl font-bold mb-8">{title}</h1>
+            <div className="md:w-auto md:pl-8 ">
+              <h1>MOVIE DETAILS</h1>
+              <h3 className="text-4xl font-bold mb-8">{title}</h3>
               <MovieDetailItem
                 name={"Release date: "}
                 value={`${day}.${month}.${year}`}
@@ -86,7 +86,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
             </div>
           </div>
         </div>
-      </Card>
+      </div>
       <Comments movieId={_id} commentIds={comments} />
     </>
   );

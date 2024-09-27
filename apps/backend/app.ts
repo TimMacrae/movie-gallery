@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { connectDB } from "./helper/connectDB.helper";
 import { errorHandlerMiddleware } from "./middleware/error-handler.middleware";
 import cookieParser from "cookie-parser";

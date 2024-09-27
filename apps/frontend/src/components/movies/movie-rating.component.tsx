@@ -1,7 +1,7 @@
 "use client";
 
-import { useRating } from "@/src/hooks/useRating.query";
-import { useUser } from "@/src/hooks/useUser.query";
+import { useRating } from "@/hooks/useRating.query";
+import { useUser } from "@/hooks/useUser.query";
 import { StarFilledIcon, StarIcon } from "@radix-ui/react-icons";
 import React from "react";
 import { useRateMovieMutation } from "./query/use-rate-movie.mutation";
