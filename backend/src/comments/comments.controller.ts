@@ -3,7 +3,7 @@ import Comment from "../../model/comments-schema.model";
 import User from "../../model/user-schema.model";
 import Movie from "../../model/movie-schema.model";
 import { BaseController } from "../utils/base.controller";
-import { IComment, ResponseComment } from "../..//types/comment.type";
+import { IComment, ResponseComment } from "../../types/comment.type";
 import { ResponseMessage } from "../../types/response.type";
 
 class CommentController extends BaseController {
