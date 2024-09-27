@@ -37,7 +37,7 @@ class MovieController extends BaseController {
       if (typeof _id === "string") query._id = _id;
       if (typeof search === "string")
         query.title = { $regex: search, $options: "i" };
-      if (typeof genre === "string") query.genre = genre;
+      if (typeof genre === "string" && genre !== "") query.genre = genre;
       if (
         releaseYear &&
         (typeof releaseYear === "string" || typeof releaseYear === "number")
