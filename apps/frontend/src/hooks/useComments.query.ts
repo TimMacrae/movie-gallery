@@ -20,7 +20,7 @@ export const getComments = async (
 
 export const useComments = (commentIds: CommentIds) => {
   return useQuery({
-    queryKey: [APIROUTES.QUERY_KEYS.COMMENTS],
+    queryKey: [APIROUTES.QUERY_KEYS.COMMENTS, commentIds],
     queryFn: () => getComments(commentIds),
     retry: 1,
   });
