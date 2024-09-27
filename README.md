@@ -88,9 +88,9 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 npm run dev
 ```
 
-# You can find some movie-posters in the test-movie-poster folder to create a movie or you can download some from this website:https://fanart.tv/
+## You can find some movie-posters in the test-movie-poster folder to create a movie or you can download some from this website:https://fanart.tv/
 
-# Not Logged-in User Access to:
+## Not Logged-in User Access to:
 
 - Home page /
 - Movies page /movies “Here you can see all movies and filter them.”
@@ -98,7 +98,7 @@ npm run dev
 - Sign in /signin
 - Sign up /signup
 
-# Logged-in User Access to:
+## Logged-in User Access to:
 
 - All of the above
 - Gallery page /gallery “Here you can see the movies you have created and update them.”
