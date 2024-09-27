@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import User from "../../model/user-schema.model";
 import { generateToken } from "../../helper/generate-token.helper";
-import {
-  SignupRequestBody,
-  SigninRequestBody,
-} from "packages/types/auth/auth.type";
+import { SignupRequestBody, SigninRequestBody } from "../../types/request.type";
 import cookie, { serialize } from "cookie";
 import { verify } from "jsonwebtoken";
 import { BaseController } from "../utils/base.controller";

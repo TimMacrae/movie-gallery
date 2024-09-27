@@ -1,6 +1,5 @@
 "use client";
 
-import { LoadingSpinner } from "@/components/loading-spinner";
 import { MovieItem } from "@/components/movies/movie-item.component";
 import React from "react";
 import { useGalleryMovies } from "../../hooks/useGalleryMovies.query";

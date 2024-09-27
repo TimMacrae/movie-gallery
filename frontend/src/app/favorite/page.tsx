@@ -1,6 +1,5 @@
 "use client";
 
-import { LoadingSpinner } from "@/components/loading-spinner";
 import { MovieItem } from "@/components/movies/movie-item.component";
 import React from "react";
 import { GalleryMoviesDialog } from "@/components/gallery/gallery-movie-dialog.component";

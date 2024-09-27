@@ -7,7 +7,6 @@ import { Comment } from "../comments/comment.component";
 import { Movie } from "@/types/movie.type";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Skeleton } from "../ui/skeleton";
 import { MovieMostDiscussedItemSkeleton } from "../skeleton/movie-most-discussed-item-skeleton.component";
 
 interface MovieMostDiscussedItemProps {

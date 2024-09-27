@@ -1,5 +1,5 @@
 import { verify } from "jsonwebtoken";
-import { IUser } from "packages/types/user.type";
+import { IUser } from "../types/user.type";
 import User from "../model/user-schema.model";
 import { Request, Response, NextFunction } from "express";
 
