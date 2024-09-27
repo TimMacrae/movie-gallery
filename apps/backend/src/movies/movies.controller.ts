@@ -4,7 +4,7 @@ import Rating from "../../model/rating-schema.model";
 import { yearToDate } from "../../helper/year-to-date.helper";
 import { BaseController } from "../utils/base.controller";
 import { IUser } from "../../types/user.type";
-import { RequestFavoriteMovie } from "../../types/movie.type";
+import { IMovie, RequestFavoriteMovie } from "../../types/movie.type";
 
 import {
   RequestMoviesQueryParams,
@@ -105,6 +105,21 @@ class MovieController extends BaseController {
         await user.save();
         res.status(200).json({ message: action });
       }
+    }
+  );
+
+  public getFavoriteMovies = this.handleRequest(
+    async (
+      req: Request,
+      res: Response<{ movies: IMovie[] } | ResponseError>
+    ) => {
+      const user = req.user as IUser;
+
+      const movies = await Movie.find({
+        _id: { $in: user.favoriteMovies },
+      });
+
+      res.status(200).json({ movies });
     }
   );
 

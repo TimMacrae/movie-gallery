@@ -15,6 +15,7 @@ export const APIROUTES = {
     ADD_GALLERY_MOVIE: "/gallery",
     GET_RATING: "/movies/rating",
     POST_RATING: "/movies/rating",
+    GET_FAVORITE_MOVIES: "/movies/favorite",
   },
   URL: {
     HOME: "/",
@@ -24,6 +25,7 @@ export const APIROUTES = {
     MOVIES: "/movies",
     MOVIE: "/movies/[id]",
     GALLERY: "/gallery",
+    FAVORITE: "/favorite",
   },
   QUERY_KEYS: {
     USER: "USER",
@@ -32,5 +34,6 @@ export const APIROUTES = {
     CREATE_COMMENT: "CREATE_COMMENT",
     GALLERY_MOVIES: "GALLERY_MOVIES",
     RATING: "RATING",
+    FAVORITE_MOVIES: "FAVORITE_MOVIES",
   },
 };
