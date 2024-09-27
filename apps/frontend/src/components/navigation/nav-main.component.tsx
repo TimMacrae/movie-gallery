@@ -19,7 +19,7 @@ export const NavMain: React.FC = () => {
         href={APIROUTES.URL.MOVIES}
         className="text-muted-foreground transition-colors hover:text-gray-300 text-white"
       >
-        Movies
+        MOVIES
       </Link>
 
       {data && (
@@ -27,7 +27,15 @@ export const NavMain: React.FC = () => {
           href={APIROUTES.URL.GALLERY}
           className="text-muted-foreground transition-colors hover:text-gray-300 text-white"
         >
-          Gallery
+          GALLERY
+        </Link>
+      )}
+      {data && (
+        <Link
+          href={APIROUTES.URL.FAVORITE}
+          className="text-muted-foreground transition-colors hover:text-gray-300 text-white"
+        >
+          FAVORITE
         </Link>
       )}
     </nav>

@@ -48,7 +48,7 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
 
   return (
     <>
-      <div className="m-4 mt-12 p-4 relative ">
+      <div className="m-4 mt-12 p-4 relative">
         <GalleryMoviesDialog type="edit" movie={movie} />
         <MovieFavorite movie_id={_id} />
         <div className="container">
@@ -63,8 +63,9 @@ const MoviePage: React.FC<MoviePageProps> = ({ params }) => {
               />
             </div>
 
-            <div className="md:w-auto md:pl-8 pt-8">
-              <h1 className="text-4xl font-bold mb-8">{title}</h1>
+            <div className="md:w-auto md:pl-8 ">
+              <h1>MOVIE DETAILS</h1>
+              <h3 className="text-4xl font-bold mb-8">{title}</h3>
               <MovieDetailItem
                 name={"Release date: "}
                 value={`${day}.${month}.${year}`}

@@ -41,7 +41,7 @@ export const NavUser: React.FC = () => {
                 href={APIROUTES.URL.SIGNIN}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Signin
+                SIGNIN
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -49,7 +49,7 @@ export const NavUser: React.FC = () => {
                 href={APIROUTES.URL.SIGNUP}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Signup
+                SIGNUP
               </Link>
             </DropdownMenuItem>
           </>
@@ -61,7 +61,7 @@ export const NavUser: React.FC = () => {
               href="#"
               className="text-muted-foreground hover:text-foreground"
             >
-              Signout
+              SIGNOUT
             </Link>
           </DropdownMenuItem>
         )}

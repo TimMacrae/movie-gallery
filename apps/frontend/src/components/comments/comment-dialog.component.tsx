@@ -47,7 +47,7 @@ export const CommentDialog: React.FC<CommentDialogProps> = ({ movieId }) => {
   });
 
   const onSubmit = (data: z.infer<typeof CommentDialogFormSchema>) => {
-    mutate({ ...data, user_id: user?._id, movie_id: movieId });
+    mutate({ ...data, user_id: user?._id as string, movie_id: movieId });
     form.reset();
     setIsOpen(false);
   };
@@ -74,7 +74,7 @@ export const CommentDialog: React.FC<CommentDialogProps> = ({ movieId }) => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle>Create a movie comment</DialogTitle>
+          <DialogTitle>CREATE A COMMENT</DialogTitle>
           <DialogDescription>
             Tell us what you think about the movie.
           </DialogDescription>
@@ -97,7 +97,7 @@ export const CommentDialog: React.FC<CommentDialogProps> = ({ movieId }) => {
 
             <DialogFooter className="sm:justify-start">
               <Button type="submit" disabled={hasError}>
-                Create Comment
+                CREATE COMMENT
               </Button>
             </DialogFooter>
           </form>

@@ -19,7 +19,7 @@ export const Comments: React.FC<MovieCommentsProps> = ({
   return (
     <div className="m-4 p-4">
       <div className="flex justify-between">
-        <div className="text-2xl font-semibold">Comments</div>
+        <div className="text-2xl font-semibold">COMMENTS</div>
         <CommentDialog movieId={movieId} />
       </div>
 

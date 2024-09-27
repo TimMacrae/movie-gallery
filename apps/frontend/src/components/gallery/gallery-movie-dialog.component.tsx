@@ -160,7 +160,10 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
         </DialogTrigger>
         <DialogContent className="sm:max-w-md bg-white">
           <DialogHeader>
-            <DialogTitle>Add a movie</DialogTitle>
+            <DialogTitle>
+              {isTypeAdd && "ADD MOVIE"}
+              {isTypeEdit && "EDIT MOVIE"}
+            </DialogTitle>
             <DialogDescription>
               {isTypeAdd && "Create a movie and add it to the gallery"}
               {isTypeEdit && "Edit the movie and save it to the gallery"}
@@ -314,8 +317,8 @@ export const GalleryMoviesDialog: React.FC<GalleryMoviesDialogProps> = ({
 
               <DialogFooter className="sm:justify-start">
                 <Button type="submit" disabled={hasError}>
-                  {isTypeAdd && "Add movie to gallery"}
-                  {isTypeEdit && "Update movie"}
+                  {isTypeAdd && "ADD MOVIE TO GALLERY"}
+                  {isTypeEdit && "UPDATE MOVIE"}
                 </Button>
               </DialogFooter>
             </form>

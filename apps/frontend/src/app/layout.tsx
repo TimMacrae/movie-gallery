@@ -30,14 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased pb-16`}
       >
         <ReactQueryProvider>
           <Toaster />
           {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
           <NavigationHeader />
           <div className="container mx-auto max-w-screen-2xl">{children}</div>
-          <footer className="bg-black h-20 mt-24"></footer>
         </ReactQueryProvider>
       </body>
     </html>

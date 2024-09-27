@@ -42,7 +42,7 @@ export const SignupForm: React.FC = () => {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-xl">Sign Up</CardTitle>
+        <CardTitle className="text-xl">SIGN UP</CardTitle>
         <CardDescription>
           Enter your information to create an account
         </CardDescription>
@@ -87,7 +87,7 @@ export const SignupForm: React.FC = () => {
               )}
             </div>
             <Button type="submit" className="w-full">
-              Create an account
+              CREATE ACCOUNT
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">

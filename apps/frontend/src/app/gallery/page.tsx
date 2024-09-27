@@ -1,13 +1,14 @@
 "use client";
 
-import { APIROUTES } from "@/api/api-routes.config";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { MovieItem } from "@/components/movies/movie-item.component";
-import Link from "next/link";
 import React from "react";
 import { useGalleryMovies } from "../../hooks/useGalleryMovies.query";
 import { GalleryMoviesDialog } from "@/components/gallery/gallery-movie-dialog.component";
 import { authProvider } from "@/components/auth/auth-provider.component";
+import { PageTitleWrapper } from "@/components/page-title-wrapper.component";
+import { NoItemsFound } from "@/components/no-items-found";
+import { MovieItemWrapper } from "@/components/movies/movie-item-wrapper.component";
 
 function GalleryPage() {
   const { data, isLoading } = useGalleryMovies();
@@ -15,30 +16,21 @@ function GalleryPage() {
   return (
     <div>
       <div className="mt-12">
-        <div className="flex justify-between m-4">
-          <div className="text-2xl font-semibold">Movie Gallery</div>
+        <PageTitleWrapper title="MOVIE GALLERY">
           <GalleryMoviesDialog type="add" />
-        </div>
-        <hr className="mx-4 border-t-1 border-gray-300" />
+        </PageTitleWrapper>
         {isLoading && <LoadingSpinner />}
         {data?.movies?.length === 0 ? (
-          <div className="flex justify-center items-center text-center font-bold h-[85vh]">
-            No movies found
-          </div>
+          <NoItemsFound text="No movies found" />
         ) : (
           <div
             className="flex flex-wrap gap-4 p-4"
             style={{ minHeight: "92vh" }}
           >
             {data?.movies?.map((movie) => (
-              <Link
-                key={movie._id}
-                href={`${APIROUTES.API.GET_MOVIES}/${movie._id}`}
-              >
-                <div className="w-[300px] h-[450px]">
-                  <MovieItem key={movie._id} movie={movie} />
-                </div>
-              </Link>
+              <MovieItemWrapper key={movie._id} movie={movie}>
+                <MovieItem key={movie._id} movie={movie} />
+              </MovieItemWrapper>
             ))}
           </div>
         )}

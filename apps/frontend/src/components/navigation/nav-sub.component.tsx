@@ -28,13 +28,13 @@ export const NavSub: React.FC = () => {
             href={APIROUTES.URL.MOVIES}
             className="text-muted-foreground hover:text-foreground text-white"
           >
-            Movies
+            MOVIES
           </Link>
           <Link
             href={APIROUTES.URL.GALLERY}
             className="text-muted-foreground hover:text-foreground text-white"
           >
-            Gallery
+            GALLERY
           </Link>
         </nav>
       </SheetContent>
