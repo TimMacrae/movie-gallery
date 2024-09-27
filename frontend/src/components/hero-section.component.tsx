@@ -8,6 +8,7 @@ export const HeroSection: React.FC = () => {
         alt="Background Image"
         layout="fill"
         objectFit="cover"
+        objectPosition="top"
         className="absolute inset-0 z-0 transform scale-x-[-1]"
       />
       <div className="absolute inset-0 "></div>
