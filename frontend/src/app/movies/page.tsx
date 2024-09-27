@@ -8,7 +8,6 @@ import { APIROUTES } from "@/api/api-routes.config";
 import { MoviesPagination } from "@/components/movies/movie-pagination.component";
 import { MoviesFilter } from "@/components/movies/movies-filter.component";
 import { MoviesQueryFilter } from "@/types/movie.type";
-import { LoadingSpinner } from "@/components/loading-spinner";
 import { MovieGridSkeleton } from "@/components/skeleton/movie-grid-skeleton.component";
 
 export default function MoviesPage() {
