@@ -9,6 +9,7 @@ import { authProvider } from "@/components/auth/auth-provider.component";
 import { PageTitleWrapper } from "@/components/page-title-wrapper.component";
 import { NoItemsFound } from "@/components/no-items-found";
 import { MovieItemWrapper } from "@/components/movies/movie-item-wrapper.component";
+import { MovieGridSkeleton } from "@/components/skeleton/movie-grid-skeleton.component";
 
 function GalleryPage() {
   const { data, isLoading } = useGalleryMovies();
@@ -19,9 +20,8 @@ function GalleryPage() {
         <PageTitleWrapper title="MOVIE GALLERY">
           <GalleryMoviesDialog type="add" />
         </PageTitleWrapper>
-        {isLoading && <LoadingSpinner />}
-        {data?.movies?.length === 0 ? (
-          <NoItemsFound text="No movies found" />
+        {isLoading ? (
+          <MovieGridSkeleton />
         ) : (
           <div
             className="flex flex-wrap gap-4 p-4"
@@ -34,6 +34,7 @@ function GalleryPage() {
             ))}
           </div>
         )}
+        {data?.movies?.length === 0 && <NoItemsFound text="No movies found" />}
       </div>
     </div>
   );

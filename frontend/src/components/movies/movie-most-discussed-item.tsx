@@ -7,6 +7,8 @@ import { Comment } from "../comments/comment.component";
 import { Movie } from "@/types/movie.type";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
+import { MovieMostDiscussedItemSkeleton } from "../skeleton/movie-most-discussed-item-skeleton.component";
 
 interface MovieMostDiscussedItemProps {
   movie: Movie;
@@ -15,31 +17,37 @@ interface MovieMostDiscussedItemProps {
 export const MovieMostDiscussedItem: React.FC<MovieMostDiscussedItemProps> = ({
   movie,
 }) => {
-  const { data: comments } = useComments(movie.comments);
+  const { data: comments, isLoading } = useComments(movie.comments);
 
   if (!comments) return null;
   return (
     <>
-      <div>
-        <Image
-          src={APIROUTES.API.ENDPOINT + movie.poster}
-          alt={movie.title}
-          width={300}
-          height={450}
-          className="rounded-xl object-cover   shadow-lg"
-        />
-      </div>
-      <div className="h-auto overflow-hidden relative">
-        {comments?.slice(-4).map((comment) => (
-          <Comment key={comment._id} comment={comment} />
-        ))}
-        <Link
-          className="absolute bottom-0"
-          href={`${APIROUTES.API.GET_MOVIES}/${movie._id}`}
-        >
-          <Button>READ ALL COMMENTS</Button>
-        </Link>
-      </div>
+      {isLoading ? (
+        <MovieMostDiscussedItemSkeleton />
+      ) : (
+        <>
+          <div>
+            <Image
+              src={APIROUTES.API.ENDPOINT + movie.poster}
+              alt={movie.title}
+              width={300}
+              height={450}
+              className="rounded-xl object-cover shadow-lg"
+            />
+          </div>
+          <div className="h-auto overflow-hidden relative">
+            {comments?.slice(-4).map((comment) => (
+              <Comment key={comment._id} comment={comment} />
+            ))}
+            <Link
+              className="absolute bottom-0"
+              href={`${APIROUTES.API.GET_MOVIES}/${movie._id}`}
+            >
+              <Button>READ ALL COMMENTS</Button>
+            </Link>
+          </div>
+        </>
+      )}
     </>
   );
 };

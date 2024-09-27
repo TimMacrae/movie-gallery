@@ -9,6 +9,7 @@ import { PageTitleWrapper } from "@/components/page-title-wrapper.component";
 import { MovieItemWrapper } from "@/components/movies/movie-item-wrapper.component";
 import { NoItemsFound } from "@/components/no-items-found";
 import { useFavoriteMovies } from "@/hooks/useFavoriteMovies.query";
+import { MovieGridSkeleton } from "@/components/skeleton/movie-grid-skeleton.component";
 
 function GalleryPage() {
   const { data, isLoading } = useFavoriteMovies();
@@ -19,9 +20,8 @@ function GalleryPage() {
         <PageTitleWrapper title="FAVORITE MOVIES">
           <GalleryMoviesDialog type="add" />
         </PageTitleWrapper>
-        {isLoading && <LoadingSpinner />}
-        {data?.movies?.length === 0 ? (
-          <NoItemsFound text="No movies found" />
+        {isLoading ? (
+          <MovieGridSkeleton />
         ) : (
           <div
             className="flex flex-wrap gap-4 p-4"
@@ -34,6 +34,8 @@ function GalleryPage() {
             ))}
           </div>
         )}
+
+        {data?.movies?.length === 0 && <NoItemsFound text="No movies found" />}
       </div>
     </div>
   );
