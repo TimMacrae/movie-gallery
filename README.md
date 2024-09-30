@@ -1,12 +1,12 @@
 ### Setup backend
 
-### Navigate into the backend folder and run
+### Navigate to the backend folder and run
 
 ```bash
  npm install
 ```
 
-### Create an .env file and add this values to the file:
+### Create an .env file and add these values to the file:
 
 ```bash
 PORT=3000
@@ -29,7 +29,7 @@ JWT_EXPIRATION=10h
     docker ps
 ```
 
-### You can now connect with mongo compas or mongo shell
+### You can now connect with Mongo Compas or Mongo Shell
 
 ```bash
 Compas: mongodb://localhost:27017
@@ -88,7 +88,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 npm run dev
 ```
 
-### You can find some movie-posters in the test-movie-poster folder to create a movie or you can download some from this website:https://fanart.tv/
+### You can find some movie posters in the test-movie-poster folder to create a movie or you can download some from this website:https://fanart.tv/
 
 ### Not Logged-in User Access to:
 
