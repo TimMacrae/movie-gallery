@@ -2,7 +2,11 @@ import { Request, Response, NextFunction } from "express";
 
 export class BaseController {
   protected handleRequest(
-    fn: (req: Request, res: Response, next: NextFunction) => Promise<void>
+    fn: (
+      req: Request,
+      res: Response,
+      next: NextFunction
+    ) => Promise<void | Response>
   ) {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {

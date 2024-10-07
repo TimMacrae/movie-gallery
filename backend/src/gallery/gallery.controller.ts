@@ -26,8 +26,7 @@ class GalleryController extends BaseController {
       const { movie } = req.body;
 
       if (!movie) {
-        res.status(404).json({ message: "Movie not valid" });
-        return;
+        return res.status(404).json({ message: "Movie not valid" });
       }
 
       const newMovie = await Movie.create({
@@ -48,8 +47,7 @@ class GalleryController extends BaseController {
       const { movie } = req.body;
 
       if (!movie) {
-        res.status(404).json({ message: "Movie not valid" });
-        return;
+        return res.status(404).json({ message: "Movie not valid" });
       }
       const updatedMovie = await Movie.findByIdAndUpdate(movie._id, movie, {
         new: true,

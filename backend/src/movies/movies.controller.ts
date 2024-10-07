@@ -91,19 +91,18 @@ class MovieController extends BaseController {
         throw new Error("Movie not found");
       }
 
-      if (action === "add") {
-        if (!user.favoriteMovies.includes(movie_id)) {
-          user.favoriteMovies.push(movie_id);
-          await user.save();
-          res.status(200).json({ message: action });
-        }
+      if (action === "add" && !user.favoriteMovies.includes(movie_id)) {
+        user.favoriteMovies.push(movie_id);
+        await user.save();
+        return res.status(200).json({ message: action });
       }
+
       if (action === "remove") {
         user.favoriteMovies = user.favoriteMovies.filter(
           (id) => id.toString() !== movie_id
         );
         await user.save();
-        res.status(200).json({ message: action });
+        return res.status(200).json({ message: action });
       }
     }
   );
@@ -132,7 +131,7 @@ class MovieController extends BaseController {
       const movie = await Movie.findById(movie_id);
 
       if (!movie) {
-        res.status(404).json({ error: "Movie not found" });
+        return res.status(404).json({ error: "Movie not found" });
       }
 
       const rating = await Rating.findOne({ movie_id, user_id: req.user?._id });
@@ -151,7 +150,7 @@ class MovieController extends BaseController {
 
       const movie = await Movie.findById(movie_id);
       if (!movie) {
-        res.status(404).json({ error: "Movie not found" });
+        return res.status(404).json({ error: "Movie not found" });
       }
 
       const existingRating = await Rating.findOne({
