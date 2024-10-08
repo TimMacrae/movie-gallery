@@ -34,7 +34,7 @@ export const MovieMostDiscussedItem: React.FC<MovieMostDiscussedItemProps> = ({
               className="rounded-xl object-cover shadow-lg"
             />
           </div>
-          <div className="h-auto overflow-hidden relative">
+          <div className="h-auto max-sm:h-[240px] overflow-hidden relative">
             {comments?.slice(-4).map((comment) => (
               <Comment key={comment._id} comment={comment} />
             ))}
