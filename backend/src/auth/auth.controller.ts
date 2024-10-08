@@ -15,8 +15,7 @@ class AuthController extends BaseController {
       const token = cookies.token;
 
       if (!token) {
-        res.status(401).json({ message: "Unauthorized" });
-        return;
+        return res.status(401).json({ message: "Unauthorized" });
       }
 
       const decoded = verify(token, process.env.JWT_SECRET as string);
@@ -24,11 +23,10 @@ class AuthController extends BaseController {
       const user = await User.findById(decoded?.id);
 
       if (!user) {
-        res.status(404).json({ message: "User not found" });
-        return;
+        return res.status(404).json({ message: "User not found" });
       }
 
-      res.json({
+      return res.json({
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -46,8 +44,7 @@ class AuthController extends BaseController {
 
       const userExists = await User.findOne({ email });
       if (userExists) {
-        res.status(400).json({ message: "User already exists" });
-        return;
+        return res.status(400).json({ message: "User already exists" });
       }
 
       const user = await User.create({ username, email, password });
@@ -64,7 +61,7 @@ class AuthController extends BaseController {
         })
       );
 
-      res.status(201).json({
+      return res.status(201).json({
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -82,8 +79,7 @@ class AuthController extends BaseController {
 
       const user = await User.findOne({ email });
       if (!user || !(await user.matchPassword(password))) {
-        res.status(400).json({ message: "Invalid credentials" });
-        return;
+        return res.status(400).json({ message: "Invalid credentials" });
       }
 
       const token = generateToken(user._id.toString());
@@ -99,7 +95,7 @@ class AuthController extends BaseController {
         })
       );
 
-      res.json({
+      return res.json({
         _id: user._id,
         username: user.username,
         email: user.email,

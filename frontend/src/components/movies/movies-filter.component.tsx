@@ -60,7 +60,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
 
   return (
     <div className="p-4 mt-8 mb-0">
-      <div className="flex w-full  items-center space-x-2">
+      <div className="flex w-full  items-center space-x-2 max-sm:flex-wrap max-sm:space-x-0 max-sm:space-y-2">
         {/* Title filter */}
         <Input
           type="search"
@@ -72,7 +72,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
 
         {/* Release year filter */}
         <Input
-          className="w-[240px]"
+          className="w-[240px] max-sm:w-full"
           name="releaseYear"
           type="number"
           placeholder="Release year"
@@ -85,7 +85,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
           value={filter.genre}
           onValueChange={(value) => updateFilter("genre", value)}
         >
-          <SelectTrigger className="w-[240px]">
+          <SelectTrigger className="w-[240px] max-sm:w-full">
             <SelectValue placeholder="Genre" />
           </SelectTrigger>
           <SelectContent>
@@ -102,7 +102,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
           value={filter.sortBy}
           onValueChange={(value) => updateFilter("sortBy", value)}
         >
-          <SelectTrigger className="w-[240px]">
+          <SelectTrigger className="w-[240px] max-sm:w-full">
             <SelectValue placeholder="Sort By" />
           </SelectTrigger>
           <SelectContent>
@@ -119,7 +119,7 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
           value={filter.sortOrder}
           onValueChange={(value) => updateFilter("sortOrder", value)}
         >
-          <SelectTrigger className="w-[240px]">
+          <SelectTrigger className="w-[240px] max-sm:w-full">
             <SelectValue placeholder="Order" />
           </SelectTrigger>
           <SelectContent>
@@ -129,10 +129,18 @@ export const MoviesFilter: React.FC<MoviesFilterProps> = ({
         </Select>
 
         {/* Reset and Search buttons */}
-        <Button variant="outline" onClick={() => handleReset()}>
-          Reset
-        </Button>
-        <Button onClick={() => handleSearch()}>Search</Button>
+        <div className="flex space-x-2 max-sm:w-full">
+          <Button
+            className="max-sm:w-1/2"
+            variant="outline"
+            onClick={() => handleReset()}
+          >
+            Reset
+          </Button>
+          <Button className="max-sm:w-1/2" onClick={() => handleSearch()}>
+            Search
+          </Button>
+        </div>
       </div>
     </div>
   );

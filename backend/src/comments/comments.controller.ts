@@ -18,7 +18,7 @@ class CommentController extends BaseController {
         _id: { $in: commentIds },
       }).populate("user_id", "username");
 
-      res.status(200).json(comments);
+      return res.status(200).json(comments);
     }
   );
 
@@ -31,14 +31,12 @@ class CommentController extends BaseController {
 
       const user = await User.findById(user_id);
       if (!user) {
-        res.status(404).json({ message: "User not found" });
-        return;
+        return res.status(404).json({ message: "User not found" });
       }
 
       const movie = await Movie.findById(movie_id);
       if (!movie) {
-        res.status(404).json({ message: "Movie not found" });
-        return;
+        return res.status(404).json({ message: "Movie not found" });
       }
 
       const newComment = new Comment({
@@ -54,7 +52,7 @@ class CommentController extends BaseController {
         ...savedComment._doc,
         user_id: { _id: user?._id, username: user?.username },
       };
-      res.status(201).json(sendComment);
+      return res.status(201).json(sendComment);
     }
   );
 }
