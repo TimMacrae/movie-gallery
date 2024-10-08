@@ -18,7 +18,7 @@ class CommentController extends BaseController {
         _id: { $in: commentIds },
       }).populate("user_id", "username");
 
-      res.status(200).json(comments);
+      return res.status(200).json(comments);
     }
   );
 
@@ -52,7 +52,7 @@ class CommentController extends BaseController {
         ...savedComment._doc,
         user_id: { _id: user?._id, username: user?.username },
       };
-      res.status(201).json(sendComment);
+      return res.status(201).json(sendComment);
     }
   );
 }

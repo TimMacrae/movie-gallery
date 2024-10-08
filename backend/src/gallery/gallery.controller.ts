@@ -35,7 +35,7 @@ class GalleryController extends BaseController {
       });
       newMovie.save();
 
-      res.status(201).json(newMovie);
+      return res.status(201).json(newMovie);
     }
   );
 
@@ -53,7 +53,7 @@ class GalleryController extends BaseController {
         new: true,
       });
 
-      res.status(200).json(updatedMovie);
+      return res.status(200).json(updatedMovie);
     }
   );
 
@@ -77,10 +77,11 @@ class GalleryController extends BaseController {
           return res.status(500).send({ error: err.message });
         }
 
-        res
+        return res
           .status(200)
           .send({ poster: `/movie-poster/${req?.file?.filename}` });
       });
+      return;
     }
   );
 }

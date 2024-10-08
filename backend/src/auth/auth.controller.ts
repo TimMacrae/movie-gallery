@@ -26,7 +26,7 @@ class AuthController extends BaseController {
         return res.status(404).json({ message: "User not found" });
       }
 
-      res.json({
+      return res.json({
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -61,7 +61,7 @@ class AuthController extends BaseController {
         })
       );
 
-      res.status(201).json({
+      return res.status(201).json({
         _id: user._id,
         username: user.username,
         email: user.email,
@@ -95,7 +95,7 @@ class AuthController extends BaseController {
         })
       );
 
-      res.json({
+      return res.json({
         _id: user._id,
         username: user.username,
         email: user.email,

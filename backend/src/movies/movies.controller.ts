@@ -70,7 +70,7 @@ class MovieController extends BaseController {
 
       const totalMovies = await Movie.countDocuments(query);
 
-      res.status(200).json({
+      return res.status(200).json({
         movies,
         totalPages: Math.ceil(totalMovies / Number(limit)),
         currentPage: Number(page),
@@ -81,14 +81,14 @@ class MovieController extends BaseController {
   public addToFavoriteMovies = this.handleRequest(
     async (
       req: Request<{}, {}, RequestFavoriteMovie>,
-      res: Response<ResponseMessage>
+      res: Response<ResponseMessage | ResponseError>
     ) => {
       const { movie_id, action } = req.body;
       const user = req.user as IUser;
 
       const movie = await Movie.findById(movie_id);
       if (!movie) {
-        throw new Error("Movie not found");
+        return res.status(404).json({ error: "Movie not found" });
       }
 
       if (action === "add" && !user.favoriteMovies.includes(movie_id)) {
@@ -104,6 +104,7 @@ class MovieController extends BaseController {
         await user.save();
         return res.status(200).json({ message: action });
       }
+      return;
     }
   );
 
@@ -118,7 +119,7 @@ class MovieController extends BaseController {
         _id: { $in: user.favoriteMovies },
       });
 
-      res.status(200).json({ movies });
+      return res.status(200).json({ movies });
     }
   );
 
@@ -136,7 +137,7 @@ class MovieController extends BaseController {
 
       const rating = await Rating.findOne({ movie_id, user_id: req.user?._id });
 
-      res.status(200).json(rating);
+      return res.status(200).json(rating);
     }
   );
 
@@ -169,7 +170,7 @@ class MovieController extends BaseController {
         });
       }
 
-      res.status(200).json({ message: "Rating added" });
+      return res.status(200).json({ message: "Rating added" });
     }
   );
 }
