@@ -6,11 +6,11 @@ export class BaseController {
       req: Request,
       res: Response,
       next: NextFunction
-    ) => Promise<void | Response>
+    ) => Promise<void | Response> | void
   ) {
     return async (req: Request, res: Response, next: NextFunction) => {
       try {
-        await fn(req, res, next);
+        await Promise.resolve(fn(req, res, next));
       } catch (error) {
         res.status(500).json({ message: "Internal server error: " + error });
       }
